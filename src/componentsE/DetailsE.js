@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import {ProductConsumer} from '../Context';
 import {Link} from 'react-router-dom';
-import {ButtonContainer} from '../componentsV/Button';
-import { isDeepStrictEqual } from 'util';
+
+
 import Timer from './TimerE';
 
 export default class DetailsE extends Component {
@@ -10,7 +10,7 @@ export default class DetailsE extends Component {
     return (
       <ProductConsumer>
         {value =>{
-        const  {idE, companyE,imgE,infoE, priceE,titleE, inPanE, incE }= value.detailEnchere;
+        const  {idE, companyE,imgE,infoE, priceE,titleE, inPanE, incE } = value.detailEnchere;
          return(
           
           <div className="container py-5">
@@ -69,12 +69,14 @@ export default class DetailsE extends Component {
               <Link to="/enchereList">
               <button type="button" class="btn btn-outline-secondary"><i className="fas fa-arrow-left" /> Retour au enchères</button>
               </Link>
+              <Link to="cartE">
               <button type="button " class="btn btn-outline-warning ml-2"
                disabled={inPanE?true:false}
                onClick={()=>{
-                 value.addToPanE(idE);
+                 value.addToCartE(idE);
                }}
-               > {inPanE?"Déja dans la liste":"Faire une offre "}</button>
+               > {inPanE?"dans enchere": "Faire une offre"}</button>
+               </Link>
 
            </div>
 
@@ -89,6 +91,6 @@ export default class DetailsE extends Component {
           
         }}
       </ProductConsumer>
-    )
+    );
   }
 }

@@ -19,6 +19,8 @@ import Modal from './componentsV/Modal';
 import EnchereList from './componentsE/EnchereList';
 import DetailsE from './componentsE/DetailsE';
 import CartE from './componentsE/CartE/CartE';
+import Signin from './Accueil/Signin';
+import Login from './Accueil/Login'
 
 
 
@@ -39,6 +41,11 @@ class App extends Component {
           <Route path="/enchereList" component={EnchereList} />
           <Route path="/detailsE" component={DetailsE} />
           <Route path="/cartE" component={CartE} />
+
+          <Route exact path="/" component={Signin} />
+          <Route path="/login" component={Login} />
+
+
           
 
 

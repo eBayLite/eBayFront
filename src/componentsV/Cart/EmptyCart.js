@@ -1,5 +1,5 @@
 import React from 'react';
-import CartTotals from './CartTotals';
+
 
 function EmptyCart(){
     return(

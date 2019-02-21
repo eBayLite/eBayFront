@@ -9,7 +9,7 @@ const ProductContext = React.createContext();
 class ProductProvider extends Component{
   state={
 
-    //product states
+    
    products: [],
    detailProduct: detailProduct,
    cart : [],
@@ -18,10 +18,11 @@ class ProductProvider extends Component{
    cartSubTotal :0,
    cartTax:0,
    cartTotal:0,
-
-   //Enchere states
    encheres : [],
-   detailEnchere : detailEnchere
+   detailEnchere : detailEnchere,
+   cartE : storeEncheres
+   
+   
 
 
   };
@@ -174,20 +175,18 @@ class ProductProvider extends Component{
 
   //Encheres methodes
 
-  setEncheres = () =>{
-     let tempEncheres =[];
-     storeEncheres.forEach(item =>{
-         const singleItem = {...item};
-         tempEncheres = [...tempEncheres,singleItem]
+ 
 
-     })
+setEncheres = ()=>{
+  let TempEncheres = [];
+  storeEncheres.forEach(item =>{
+    const singleItem = {...item};
+    TempEncheres = [...TempEncheres,singleItem];
+   })
      this.setState(() =>{
-       return{encheres:tempEncheres}
-     })
-
-
-
-  }
+     return{encheres : TempEncheres}
+   })
+}
 
 
  getItemE = (idE) =>{
@@ -206,10 +205,41 @@ class ProductProvider extends Component{
    })
   }
 
-  addToPanE = idE =>{
-    let tempEncheres = [...this.state.encheres];
+  addToCartE = idE  => {
+    let TempEncheres = [...this.state.encheres];
+    const index = TempEncheres.indexOf(this.getItem(idE));
+    const enchere =TempEncheres[index];
+    enchere.inPanE=true;
+    enchere.priceE=15;
+    enchere.incE=5;
+
+    this.setState(()=>{
+      return{
+        encheres:TempEncheres, 
+        cartE :[...this.state.cartE,enchere]
+        
+      };
+    });
     
-  }; 
+  }
+
+ 
+
+  incrementE = (idE)=>{
+    let tempCart = [...this.state.cart];
+    const selectedEnchere = tempCart.find(item=> item.idE===idE)
+
+    const index = tempCart.indexOf(selectedEnchere);
+    const enchere = tempCart[index];
+
+    enchere.priceE = enchere.priceE +5;
+    
+
+    this.setState(
+                 ()=>{return{panE:[...tempCart]}})
+  }
+
+
 
 
 
@@ -240,7 +270,8 @@ class ProductProvider extends Component{
             //Encheres
 
             handleDetailE : this.handleDetailE,
-            addToPanE : this.addToPanE
+            addCartE : this.addToCartE,
+            incrementE : this.incrementE
 
           }}>
              {this.props.children}  

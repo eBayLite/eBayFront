@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
-import {EncherConsumer, ProductConsumer} from '../Context';
+import { ProductConsumer} from '../Context';
 import Timer from './TimerE';
 import PropTypes from 'prop-types';
 
@@ -11,24 +11,22 @@ import PropTypes from 'prop-types';
 export default class Enchere extends Component {
   
   render() {
-    const {idE, titleE, imgE, priceE, inPanE } =this.props.enchere;
+    const {idE, titleE, imgE, priceE, } =this.props.enchere;
     return (
       <EnchereWrapper className="col-9 mx-auto col-md-6 col-lg-3 my-3">
         <div className="card">
 
         <ProductConsumer>
-        {(value) =>(
+        {value=>(
           <div className="img-container p-5"
            onClick={() =>
            value.handleDetailE(idE)}>
           <Link to="/detailsE">
           <img src={imgE} alt="enchere" className="card-img-top" />
           </Link>
-   
-          <button className="cart-btn" disabled={inPanE?true:false}
-           onClick={()=>{
-             value.addToPanE(idE);
-            }} >{inPanE?(<p className="text-capitalize" disabled>Enchère</p>):(<i className="fas fa-hand-paper" />) }</button>
+
+         
+          
           
            </div>
         ) }
