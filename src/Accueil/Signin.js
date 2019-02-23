@@ -165,4 +165,4 @@ class SignIn extends Component {
   }
 }
 
-export default S
+export default SignIn;
