@@ -77,6 +77,7 @@ const ProductWrapper = styled.div`
  .card{
      border-color : transparent;
      transition : all 0.5s linear;
+     background : #ffffff;
  }
  .card-footer{
     background : transparent;
@@ -85,7 +86,7 @@ const ProductWrapper = styled.div`
  }
  &:hover{
     .card{
-        background : rgba(253,234,200);
+        background : #ffffff;
         border : 0.04rem solid rgba(0,0,0,0.2);
         box-shadow : 2px 2px 5px 0px rgba(0,0,0,0.2)
     } 

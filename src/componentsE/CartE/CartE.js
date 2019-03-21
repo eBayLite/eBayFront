@@ -3,12 +3,13 @@ import TitleE from '../TitleE';
 import CartColumnsE from './CartColumnsE';
 import EmptyCartE from './EmptyCartE';
 import {ProductConsumer} from '../../Context';
+import NavBar2 from '../../NavBar2';
 
 
 export default class CartE extends Component {
   render() {
     return (
-     <section>
+     <section >
        <ProductConsumer>
          {value =>{
            const {cartE} = value;
@@ -17,6 +18,7 @@ export default class CartE extends Component {
                <React.Fragment>
 
                 <TitleE name="Vos " title="Enchère" />
+                <NavBar2 />
                 <CartColumnsE />
 
                </React.Fragment>
@@ -30,10 +32,19 @@ export default class CartE extends Component {
           }
          }}
        </ProductConsumer>
-       
+
 
        
+       
+      
+
+       
+       
      </section>
+    
+     
+     
+
     )
   }
 }

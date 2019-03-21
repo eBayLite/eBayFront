@@ -9,6 +9,8 @@
  --mainDark:#232528;
  --mainYellow:#ffa400;
  --mainGreen:#5cf34e;
+ --mainBar:#b6b4b4;
+
  
 }
 
@@ -20,7 +22,7 @@ body{
 
 .text-title{
   font-family: 'Oswald', cursive;
-  letter-spacing: 0.3rem;
+  letter-spacing: 0.4rem;
   text-transform: uppercase;
 }
 

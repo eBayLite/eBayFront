@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {storeProducts, detailProduct } from './data';
 import {storeEncheres, detailEnchere } from './dataE';
 
+
 const ProductContext = React.createContext();
 //Provider
 //Consumer
@@ -20,7 +21,8 @@ class ProductProvider extends Component{
    cartTotal:0,
    encheres : [],
    detailEnchere : detailEnchere,
-   cartE : storeEncheres
+   cartE : storeEncheres,
+   
    
    
 
@@ -70,7 +72,7 @@ class ProductProvider extends Component{
         products:TempProducts, 
         cart :[...this.state.cart,product]
       };
-    },()=>{
+    },() => {
       this.addTotals();
     })
   }

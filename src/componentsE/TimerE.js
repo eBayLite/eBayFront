@@ -2,16 +2,21 @@ import React, {Component} from 'react';
 
 
 class Timer extends Component {
-    constructor(props) {
-      super(props);
+    constructor() {
+      super();
       this.state = {
-           seconds: 0,
-           minute : 0,
-           heur: 24
+
+           
+           seconds: 59,
+           minute : 59,
+           heur: 23
            
         
         };
+
     }
+
+    
   
 tick() {
 

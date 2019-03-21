@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 export default class Enchere extends Component {
   
   render() {
-    const {idE, titleE, imgE, priceE, } =this.props.enchere;
+    const {idE, titleE, imgE, priceE, DateD, DateF} =this.props.enchere;
     return (
       <EnchereWrapper className="col-9 mx-auto col-md-6 col-lg-3 my-3">
         <div className="card">
@@ -36,6 +36,7 @@ export default class Enchere extends Component {
         </ProductConsumer>
         {/* footer */}   
 
+        
         <div className="card-footer d-flex justify-content-between">
              <p className="align-self-center mb-0">
              {titleE}
@@ -50,7 +51,7 @@ export default class Enchere extends Component {
             
              </h5>
              <h6 className="mx-auto">
-              <Timer />
+              <Timer  dateD={DateD} dateF={DateF}/>
              </h6>
             </div>
 

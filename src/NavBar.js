@@ -13,14 +13,14 @@ class NavBar extends Component{
      
       
 
-        <Link to="/productList" >
+        <Link to="/" >
          <img src={logos} alt="store" className="navbar-brand"></img>
         </Link>
 
         <ul className="navbar-nav align-items-center">
          <li className="nav-item ml-5">
           <Link to="/productList" className="nav-link" >
-           produits
+           Ventes
           </Link>
          </li>
 
@@ -83,13 +83,17 @@ class NavBar extends Component{
        </Link>
 
        
-        <Link to="/cart" className="ml-2">
+        <Link to="/cart" className="ml-2 mr-2">
         <button type="button" class="btn btn-warning">
             <span className="mr-2">
              <i className="fas fa-cart-plus" />
             </span>
            Mon panier
         </button>
+       </Link>
+
+       <Link to="/login">
+       Se deconnecter
        </Link>
 
       </NavWrapper>
