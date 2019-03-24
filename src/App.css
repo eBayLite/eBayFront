@@ -146,18 +146,40 @@ input.error {
   display: relative;
 }
 
-.firstName {
+.nom {
   margin-right: 1%;
 }
 
-.lastName {
+.prenom {
+  margin-left: 1%;
+}
+
+.email {
+  margin-right: 1%;
+}
+
+.emailC {
+  margin-left: 1%;
+}
+
+.password {
+  margin-right: 1%;
+}
+
+.passwordC {
   margin-left: 1%;
 }
 
 .firstName,
 .lastName,
+.phone,
+.adresse,
+.ville,
+.codeP,
 .email,
-.password {
+.emailC,
+.password,
+.passwordC {
   display: flex;
   flex-direction: column;
   margin-bottom: 15px;
@@ -169,8 +191,13 @@ input.error {
 }
 
 .email,
-.password {
-  width: 100%;
+.emailC {
+  width: 49%;
+}
+
+.password,
+.passwordC {
+  width: 49%;
 }
 
 .createAccount {

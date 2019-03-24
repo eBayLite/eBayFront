@@ -2,6 +2,21 @@ import React, { Component } from 'react'
 import {Link} from 'react-router-dom';
 
 export default class CreerEnchere extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+     
+      etat: '',
+      nom: '',
+      categorie:'',
+      prix:0,
+      contact:'',
+      info:'',
+      img:''
+    };
+  }
   render() {
     return (
       

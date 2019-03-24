@@ -20,7 +20,7 @@ import Modal from './componentsV/Modal';
 import EnchereList from './componentsE/EnchereList';
 import DetailsE from './componentsE/DetailsE';
 import CartE from './componentsE/CartE/CartE';
-import Signin from './Accueil/Signin';
+import Register from './Accueil/Register';
 import Login from './Accueil/Login';
 import Reinit from './Accueil/Reinit';
 import CreerEnchere from './componentsE/CartE/CreerEnchere'
@@ -36,7 +36,7 @@ class App extends Component {
         <NavBar />
         
         <Switch>
-          <Route exact path="/" component={Signin} />
+          <Route exact path="/" component={Register} />
           <Route path="/login" component={Login} />
           <Route path="/reinit" component={Reinit} />
 

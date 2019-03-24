@@ -1,136 +1,70 @@
-import React, { Component } from "react";
-import "../../src/App.css";
-import {Link} from 'react-router-dom';
-
-const emailRegex = RegExp(
-  /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
-);
-
-const formValid = ({ formErrors, ...rest }) => {
-  let valid = true;
-
-  // validate form errors being empty
-  Object.values(formErrors).forEach(val => {
-    val.length > 0 && (valid = false);
-  });
-
-  // validate the form was filled out
-  Object.values(rest).forEach(val => {
-    val === null && (valid = false);
-  });
-
-  return valid;
-};
+import React, { Component } from 'react'
+import { login } from './UserFunctions'
 
 class Login extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-     
-      email: null,
-      password: null,
-      
-    };
-  }
-
-  handleSubmit = e => {
-    e.preventDefault();
-
-    if (formValid(this.state)) {
-      console.log(`
-       
-        Email: ${this.state.email}
-        Password: ${this.state.password}
-      `);
-    } else {
-      console.error("FORM INVALID - DISPLAY ERROR MESSAGE");
-    }
-  };
-
-  handleChange = e => {
-    e.preventDefault();
-    const { name, value } = e.target;
-    let formErrors = { ...this.state.formErrors };
-
-    switch (name) {
-     
-      case "email":
-        formErrors.email = emailRegex.test(value)
-          ? ""
-          : "invalid email address";
-        break;
-      case "password":
-        formErrors.password =
-          value.length < 6 ? "minimum 6 characaters required" : "";
-        break;
-      default:
-        break;
+    constructor() {
+        super()
+        this.state = {
+            email: '',
+            password: '',
+        }
+        this.onChange = this.onChange.bind(this)
+        this.onSubmit = this.onSubmit.bind(this)
     }
 
-    this.setState({ formErrors, [name]: value }, () => console.log(this.state));
-  };
+    onChange (e) {
+        this.setState({ [e.target.name]: e.target.value })
+    }
 
-  render() {
-    const { formErrors } = this.state;
+    onSubmit (e) {
+        e.preventDefault()
 
-    return (
-      <div className="wrapper">
-        <div className="form-wrapper">
-         
-          <form onSubmit={this.handleSubmit} noValidate>
-           <h1>Authentification</h1>
-            
-            <div className="email">
-              <label htmlFor="email">Email</label>
-              <input
-                
-                placeholder="Email"
-                type="email"
-                name="email"
-                noValidate
-                onChange={this.handleChange}
-              />
-             
+        const user = {
+            email: this.state.email,
+            password: this.state.password
+        }
+
+        login(user).then(res => {
+            if (res) {
+                this.props.history.push(`/profile`)
+            }
+        })
+    }
+
+    render () {
+        return (
+            <div className="container">
+                <div className="row">
+                    <div className="col-md-6 mt-5 mx-auto">
+                        <form noValidate onSubmit={this.onSubmit}>
+                            <h1 className="h3 mb-3 font-weight-normal">Connectez vous</h1>
+                            <div className="form-group">
+                                <label htmlFor="email">Email</label>
+                                <input type="email"
+                                    className="form-control"
+                                    name="email"
+                                    placeholder="Entrer votre email"
+                                    value={this.state.email}
+                                    onChange={this.onChange} />
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="password">Mot de passe</label>
+                                <input type="password"
+                                    className="form-control"
+                                    name="password"
+                                    placeholder="Entrer votre mot de passe"
+                                    value={this.state.password}
+                                    onChange={this.onChange} />
+                            </div>
+                            <button type="submit" className="btn btn-lg btn-primary btn-block">
+                            Se Connecter
+                            </button>
+                        </form>
+                    </div>
+                </div>
             </div>
-
-            <div className="password" >
-              <label htmlFor="password">Mot de passe</label>
-              <input
-                
-                placeholder="Password"
-                type="password"
-                name="password"
-                noValidate
-                onChange={this.handleChange}
-              />
-             
-            </div>
-
-            <div className="createAccount">
-              <Link to="/productList">
-              
-              <button className="submit"> Se connecter </button>
-              </Link>
-            </div>
-
-
-            <div className="createAccount">
-            
-             <Link to="/reinit">
-              <h6>Mot de passe oublié ?</h6>
-              </Link>
-
-            </div>
-
-
-
-
-          </form>
-        </div>
-      </div>
-    );
-  }
+        )
+    }
 }
 
-export default Login;
+export default Login
