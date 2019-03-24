@@ -45,7 +45,6 @@ Notre application permettra l’implémentation de plusieurs services métiers:
 # Notes!
 
 ******
-  -Pour executer le front, il faut d'abord installer certaines dépendances:
+  -Pour executer le front, utilisez:
  ```sh
-npm install --save react-router
-Puis : npm start
+npm start
