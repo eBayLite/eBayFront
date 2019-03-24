@@ -16,7 +16,7 @@ export default class CreerEnchere extends Component {
                   <select id="inputState" class="form-control">
                   <option selected>Etat du produit...</option>
                   <option>Neuf</option>
-                  <option>Occasio</option>
+                  <option>Occasion</option>
                   </select>
                   </div>
                  

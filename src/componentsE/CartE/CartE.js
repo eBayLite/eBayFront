@@ -17,7 +17,7 @@ export default class CartE extends Component {
              return(
                <React.Fragment>
 
-                <TitleE name="Vos " title="Enchère" />
+                <TitleE name="Vos " title="Enchères" />
                 <NavBar2 />
                 <CartColumnsE />
 
