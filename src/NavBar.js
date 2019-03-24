@@ -6,6 +6,10 @@ import styled from 'styled-components';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
+
+
+
+
 class NavBar extends Component{
     render(){
         return(
@@ -86,6 +90,8 @@ class NavBar extends Component{
        
        </Link>
 
+       
+
        <Link to="/login" className="ml-2 mr-2">
        <button type="button" class="btn btn-light btn-sm ">
             <span className="mr-2">
@@ -96,7 +102,8 @@ class NavBar extends Component{
        </Link>
 
        </ul>
-        
+
+
          
 
       </NavWrapper>

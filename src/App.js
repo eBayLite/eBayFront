@@ -55,7 +55,7 @@ class App extends Component {
           
         </Switch>
         <Modal />
-        <Footer/>
+  
         
       </React.Fragment>
     );

@@ -11,7 +11,7 @@ class Footer extends Component{
 
 
 
-      <NavWrapper className="navbar navbar-expand-sm  navbar-dark px-sm-5" >
+      <NavWrapper className="navbar navbar-expand-sm  navbar-dark px-sm-5 mb-0" >
 
       
 <ul class="nav justify-content-center ml-5">
