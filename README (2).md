@@ -8,7 +8,7 @@
  > **CONTEXTE**:
  ******
     
-   Dans le cadre de notre formation  Master 1 MIAGE en apprentissage, nous avons été chargés de créer une application web basée sur le même principe que le site eBay, mais qui sera une application lite, c’est-à-dire allégée par rapport l’application originale.    
+   Dans le cadre de notre formation  Master 1 MIAGE en apprentissage, nous avons été chargés de créer une application web basée sur le même principe que le site eBay, mais qui sera une application lite, c’est-à-dire allégée par rapport à l’application originale.    
 
     
 ****    
