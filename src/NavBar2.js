@@ -11,22 +11,7 @@ class NavBar2 extends Component{
         return(
     <NavWrapper className="navbar navbar-expand-sm  navbar-dark px-sm-5">
      
-      
-
-        
-
-        
-
-
-
-         
-
-        
-
-
-         
-        
-        <ul className="navbar-nav align-items-center ml-auto ">
+      <ul className="navbar-nav align-items-center ml-auto ">
             
         <Link to="/creerEnchere" >
         <button type="button" class="btn btn-outline-dark">
@@ -37,22 +22,9 @@ class NavBar2 extends Component{
         </button>
        </Link>
         
-         
-
         </ul>
 
-       
-
-
-    
-        
-        
-
-       
-        
-
-
-      </NavWrapper>
+        </NavWrapper>
 
 
 );
@@ -74,7 +46,4 @@ background:var(--mainBar);
 }
 
 `
-
-
-
 export default NavBar2;
