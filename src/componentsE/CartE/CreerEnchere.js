@@ -25,24 +25,45 @@ export default class CreerEnchere extends Component {
                   <h6 className="text-blue col-md-6"><input type="text" class="form-control " placeholder="Le nom du produit" ></input>  </h6>
 
              
-                   <h6 className="text-blue col-md-6"><input type="text" class="form-control " placeholder="Le prix" ></input>  </h6>
+                   <h6 className="text-blue col-md-6"><input type="text" class="form-control " placeholder="Catégorie" ></input>  </h6>
 
                    
-                   <h6 className="text-blue col-md-6"> <input type="text" class="form-control" placeholder="Model" ></input> </h6>
+                   <h6 className="text-blue col-md-6"> <input type="text" class="form-control" placeholder="Prix" ></input> </h6>
                    
                    
                    <h6 className="text-blue col-md-6"> <input type="text" class="form-control"  placeholder="Contact (tél)"></input><span className="text-uppercase"></span></h6>
                          
                    <p className="col-md-5 mb-1"> Informations sur le produit :</p>
                    <p className="text-muted lead col-md-6"><textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea></p>
-                         
+
+
                  
+
                   <div>
+                   <p className=" col-md-5 mb-1 "> Date du début</p>
+                   <div className="col-md-4">
+                   <input type="date"  /> 
+                   </div> 
+
+                  </div> 
+
+                  <div>
+                   <p className=" col-md-5 mb-1 "> Date de fin</p>
+                   <div className="col-md-4">
+                   <input type="date"  /> 
+                   </div> 
+
+                  </div>     
+                 
+                 
                               
                   <p className=" col-md-5 mb-1 mt-2"> Ajouter une photo de votre produit</p>
                    <div className="col-md-4">
                    <input type="file" className="form-control-file  " /> 
-                   </div>   
+                   </div>  
+
+                 
+
 
                    <div className="col-md-6 ml-auto">
                       <Link to="/enchereList">
@@ -64,7 +85,7 @@ export default class CreerEnchere extends Component {
 
 
                          </div>
-                </div>
+                
             )
           }}
 
