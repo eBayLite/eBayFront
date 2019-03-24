@@ -11,40 +11,8 @@ class NavBar extends Component{
         return(
 
 
-     <div>   
-    <NavWrapperr className="navbar navbar-expand-sm  navbar-dark px-sm-5">
-     
-    <ul className="navbar-nav align-items-center ml-auto  ">
-        
-         <Link to="/cartE" className="ml-5">
-        <button type="button" class="btn btn-light">
-            <span className="mr-2">
-             <i className="fas fa-hand-paper" />
-            </span>
-           Mes enchères
-        </button>
-       </Link>
 
-       
-        <Link to="/cart" className="ml-2 mr-2">
-        <button type="button" class="btn btn-light">
-            <span className="mr-2">
-             <i className="fas fa-cart-plus" />
-            </span>
-           Mon panier
-        </button>
-       </Link>
-
-       <Link to="/login">
-       Se deconnecter
-       </Link>
-
-       </ul>
-
-      </NavWrapperr>
-
-
-      <NavWrapper className="navbar navbar-expand-sm  navbar-dark px-sm-5">
+      <NavWrapper className="navbar navbar-expand-sm  navbar-dark px-sm-5" >
      
       <Link to="/" >
          <img src={logos} alt="store" className="navbar-brand"></img>
@@ -94,6 +62,40 @@ class NavBar extends Component{
            </li>    
 
         </ul>
+
+
+        <ul className="navbar-nav align-items-center ml-auto mt-0.1  ">
+        
+         <Link to="/cartE" className="ml-5">
+        <button type="button" class="btn btn-light btn-sm" >
+            <span className="mr-2">
+             <i className="fas fa-hand-paper" />
+            </span>
+           Mes enchères
+        </button>
+       </Link>
+
+       
+        <Link to="/cart" className="ml-2 ">
+        <button type="button" class="btn btn-light btn-sm">
+            <span className="mr-2">
+             <i className="fas fa-cart-plus" />
+            </span>
+           Mon panier
+        </button>
+       
+       </Link>
+
+       <Link to="/login" className="ml-2 mr-2">
+       <button type="button" class="btn btn-light btn-sm ">
+            <span className="mr-2">
+             <i className="fas fa-user" />
+            </span>
+           Se deconnecter
+        </button>
+       </Link>
+
+       </ul>
         
          
 
@@ -104,7 +106,7 @@ class NavBar extends Component{
 
 
 
-      </div>  
+     
 
 
 
@@ -117,24 +119,10 @@ class NavBar extends Component{
 }
 }
 
-const NavWrapperr = styled.nav`
-background:var(--mainWhite);
-.nav-link{
-    color:var(--mainWhitee) !important;
-    font-size:1.3rem
-    text-transform:capitalize !important;
-}
 
-.nav-link:hover{
-  color:var(--mainYellow) !important;
-  font-size:1.33rem
-  text-transform:capitalize !important;
-}
-
-`
 
 const NavWrapper = styled.nav`
-background:var(--mainBlue);
+background:#464745;
 .nav-link{
     color:var(--mainWhitee) !important;
     font-size:1.3rem

@@ -1,0 +1,66 @@
+import React, { Component } from 'react';
+
+
+import styled from 'styled-components';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+
+class Footer extends Component{
+    render(){
+        return(
+
+
+
+      <NavWrapper className="navbar navbar-expand-sm  navbar-dark px-sm-5" >
+
+      
+<ul class="nav justify-content-center ml-5">
+  <li class="nav-item ml-5">
+    <h4>Acheter </h4>
+    <p>Ce site vous permet d'acheter..</p>
+  </li>
+  <li class="nav-item ml-5">
+  <h4>Vendre</h4>
+  <p>Vendre vos produits</p>
+  </li>
+  <li class="nav-item ml-5">
+  <h4>A propos de nous</h4>
+  <p>Bejaia est un site E-Commerce </p>
+  </li>
+  <li class="nav-item ml-5">
+  <h4>Contactez nous</h4>
+  </li>
+</ul>
+     
+      
+         
+
+      </NavWrapper>
+
+
+
+);
+}
+}
+
+
+
+const NavWrapper = styled.nav`
+background:#464745;
+.nav-link{
+    color:var(--mainWhitee) !important;
+    font-size:3rem
+    text-transform:capitalize !important;
+}
+
+.nav-link:hover{
+  color:var(--mainYellow) !important;
+  font-size:1.33rem
+  text-transform:capitalize !important;
+}
+
+`
+
+
+
+export default Footer;

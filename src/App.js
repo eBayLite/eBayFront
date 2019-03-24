@@ -9,7 +9,7 @@ import { Switch,Route } from 'react-router-dom';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from './NavBar';
-import NavBar2 from './NavBar2';
+import Footer from './Footer';
 import Default from './Default';
 
 import ProductList from './componentsV/ProductList';
@@ -51,21 +51,11 @@ class App extends Component {
 
           <Route path="/creerEnchere" component={CreerEnchere} />
 
-          
-
-
-          
-
-
-
-          
-
-          
-          
           <Route component={Default} />
           
         </Switch>
         <Modal />
+        <Footer/>
         
       </React.Fragment>
     );
