@@ -52,7 +52,7 @@ class Register extends Component {
                     <h1 className="h3 mb-3 font-weight-normal">Créer un compte</h1>
                         <form noValidate onSubmit={this.onSubmit}>
                            
-                            <div className="form-group">
+                            <div className="form-group col-md-6">
                                 <label htmlFor="nom">Nom</label>
                                 <input type="text"
                                     className="form-control"
@@ -63,7 +63,7 @@ class Register extends Component {
                             </div>
 
 
-                            <div className="form-group">
+                            <div className="form-group col-md-6">
                                 <label htmlFor="prenom">Prenom</label>
                                 <input type="text"
                                     className="form-control"
@@ -74,7 +74,7 @@ class Register extends Component {
                             </div>
 
 
-                            <div className="form-group">
+                            <div className="form-group col-md-6">
                                 <label htmlFor="email">Email</label>
                                 <input type="email"
                                     className="form-control"
@@ -85,7 +85,7 @@ class Register extends Component {
                             </div>
 
 
-                            <div className="form-group">
+                            <div className="form-group col-md-6">
                                 <label htmlFor="phone">Téléphone</label>
                                 <input type="text"
                                     className="form-control"
@@ -96,7 +96,7 @@ class Register extends Component {
                             </div>
 
 
-                            <div className="form-group">
+                            <div className="form-group col-md-4">
                                 <label htmlFor="adresse">Addresse</label>
                                 <input type="text"
                                     className="form-control"
@@ -107,7 +107,7 @@ class Register extends Component {
                             </div>
 
 
-                            <div className="form-group">
+                            <div className="form-group col-md-4">
                                 <label htmlFor="ville">Ville</label>
                                 <input type="text"
                                     className="form-control"
@@ -118,7 +118,7 @@ class Register extends Component {
                             </div>
 
 
-                            <div className="form-group">
+                            <div className="form-group col-md-4">
                                 <label htmlFor="code_postal">Code Postal</label>
                                 <input type="text" 
                                     className="form-control"
@@ -128,7 +128,7 @@ class Register extends Component {
                                     onChange={this.onChange} />
                             </div>
                             
-                            <div className="form-group">
+                            <div className="form-group col-md-6">
                                 <label htmlFor="password">Mot de passe</label>
                                 <input type="password"
                                     className="form-control"
@@ -139,7 +139,7 @@ class Register extends Component {
                             </div>
 
 
-                            <div className="form-group">
+                            <div className="form-group col-md-6">
                                 <label htmlFor="password2">Confirmer mot de passe</label>
                                 <input type="password"
                                     className="form-control"
@@ -156,7 +156,7 @@ class Register extends Component {
                                  Cliquez ici
                                 </Link>
 
-                                </div>
+                            </div>
                         </form>
                     </div>
                 </div>
