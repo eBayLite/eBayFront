@@ -14,26 +14,29 @@ export default class Enchere extends Component {
     const {idE, titleE, imgE, priceE, DateD, DateF} =this.props.enchere;
     return (
       <EnchereWrapper className="col-9 mx-auto col-md-6 col-lg-3 my-3">
-        <div className="card">
+
+
+
+       <div className="card">
 
         <ProductConsumer>
-        {value=>(
-          <div className="img-container p-5"
-           onClick={() =>
-           value.handleDetailE(idE)}>
-          <Link to="/detailsE">
-          <img src={imgE} alt="enchere" className="card-img-top" />
-          </Link>
+           {value=>(
+            <div 
+               className="img-container p-5"
+              
+               onClick={() =>
+               value.handleDetailE(idE)}>
 
-         
-          
-          
-           </div>
-        ) }
+               <Link to="/detailsE">
+               <img src={imgE} alt="enchere" className="card-img-top" />
+               </Link>
+            </div>
+            )}
 
        
 
         </ProductConsumer>
+
         {/* footer */}   
 
         
@@ -42,18 +45,19 @@ export default class Enchere extends Component {
              {titleE}
              </p>
              
-         </div>
-         <div>
+        </div>
+         
+         
+        <div>
 
          <h5 className="text-blue font-italic rm-2 ">
-              Dérniere offre reçu:   {priceE}
-             <span className="mr-1">  € </span>
+          Dérniere offre reçu:  {priceE}<span className="mr-1"> € </span>
+         </h5>
             
-             </h5>
-             <h6 className="mx-auto">
-              <Timer  dateD={DateD} dateF={DateF}/>
-             </h6>
-            </div>
+         <h6 className="mx-auto">
+            <Timer  dateD={DateD} dateF={DateF}/>
+          </h6>
+        </div>
 
 
 
@@ -65,13 +69,13 @@ export default class Enchere extends Component {
 }
 
 Enchere.propTypes = {
-enchere : PropTypes.shape({
+  enchere : PropTypes.shape({
 
-  idE : PropTypes.number,
-  imgE :PropTypes.string,
-  titleE : PropTypes.string,
-  priceE :PropTypes.number,
-  inPanE : PropTypes.bool
+     idE : PropTypes.number,
+     imgE :PropTypes.string,
+     titleE : PropTypes.string,
+     priceE :PropTypes.number,
+    inPanE : PropTypes.bool
 
 }).isRequired
   

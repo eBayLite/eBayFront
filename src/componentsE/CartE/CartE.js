@@ -13,11 +13,11 @@ export default class CartE extends Component {
        <ProductConsumer>
          {value =>{
            const {cartE} = value;
-           if(cartE.length>0){
+           if(cartE.length===0){
              return(
                <React.Fragment>
 
-                <TitleE name="Vos " title="Enchère" />
+                <TitleE name="Vos " title="Enchères" />
                 <NavBar2 />
                 <CartColumnsE />
 

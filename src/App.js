@@ -24,6 +24,9 @@ import Register from './Accueil/Register';
 import Login from './Accueil/Login';
 import Reinit from './Accueil/Reinit';
 import CreerEnchere from './componentsE/CartE/CreerEnchere'
+import listEnchere from '../src/componentsE/listEnchere';
+
+import dataE from './dataE'
 
 
 
@@ -37,6 +40,7 @@ class App extends Component {
         
         <Switch>
           <Route exact path="/" component={Register} />
+          <Route exact path="/l" component={listEnchere} />
           <Route path="/login" component={Login} />
           <Route path="/reinit" component={Reinit} />
 

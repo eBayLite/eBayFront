@@ -5,7 +5,7 @@ https://www.iconfinder.com/Makoto_msk */
 
 export const storeProducts = [
   {
-    id: 1,
+    id: "1",
     title: "Cisco 2018 ",
     img: "imgV/product-1.jpg",
     price: 120,
@@ -17,7 +17,7 @@ export const storeProducts = [
     total: 0
   },
   {
-    id: 2,
+    id: "2",
     title: "Montre connecté",
     img: "imgV/product-2.jpg",
     price: 558,
@@ -29,7 +29,7 @@ export const storeProducts = [
     total: 0
   },
   {
-    id: 3,
+    id: "3",
     title: "Montre Fossil",
     img: "imgV/product-3.jpg",
     price: 988,
@@ -41,7 +41,7 @@ export const storeProducts = [
     total: 0
   },
   {
-    id: 4,
+    id: "4",
     title: "TV UltraHD",
     img: "imgV/product-4.jpg",
     price: 570,
@@ -53,7 +53,7 @@ export const storeProducts = [
     total: 0
   },
   {
-    id: 5,
+    id:" 5",
     title: "Video-Projecteur HD",
     img: "imgV/product-5.jpg",
     price: 240,
@@ -65,7 +65,7 @@ export const storeProducts = [
     total: 0
   },
   {
-    id: 6,
+    id: "6",
     title: "Tableau de projection",
     img: "imgV/product-6.jpg",
     price: 170,
@@ -77,7 +77,7 @@ export const storeProducts = [
     total: 0
   },
   {
-    id: 7,
+    id: "7",
     title: "Camera de voiture",
     img: "imgV/product-7.jpg",
     price: 860,
@@ -89,7 +89,7 @@ export const storeProducts = [
     total: 0
   },
   {
-    id: 8,
+    id: "8",
     title: "Micro SD 32g",
     img: "imgV/product-8.jpg",
     price: 450,
@@ -104,7 +104,7 @@ export const storeProducts = [
 ];
 
 export const detailProduct = {
-  id: 1,
+  id: "1",
   title: "Google Pixel - Black",
   img: "imgV/product-1.png",
   price: 10,

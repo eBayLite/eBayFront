@@ -35,8 +35,8 @@ class NavBar extends Component{
           </Link>
          </li>
          <li className="nav-item ml-5">
-          <Link to="/promotion" className="nav-linka" >
-           Promo
+          <Link to="/l" className="nav-linka" >
+           Enchere test
           </Link>
          </li>
          </ul>

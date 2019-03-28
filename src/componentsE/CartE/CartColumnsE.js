@@ -15,10 +15,10 @@ return(
    </div>
 
    <div className="col-10 mx-auto col-lg-2">
-    <p className="text-uppercase">Dernière ofrre</p>
+    <p className="text-uppercase">Dernière offre</p>
    </div>
    <div className="col-10 mx-auto col-lg-2">
-    <p className="text-uppercase">Anchèrer</p>
+    <p className="text-uppercase">Enchérir</p>
    </div>
    
 

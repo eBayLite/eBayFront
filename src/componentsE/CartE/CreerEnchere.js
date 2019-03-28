@@ -1,110 +1,109 @@
 import React, {Component} from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import {Link} from 'react-router-dom';
+import axios from 'axios';
 
-export default class CreateTodo extends Component {
-
-    constructor(props) {
+export default class CreerEnchere extends Component {
+    constructor(props){
         super(props);
 
-        this.onChangeEtat = this.onChangeEtat.bind(this);
-        this.onChangeCategorie = this.onChangeCategorie.bind(this);
-        this.onChangeNom = this.onChangeNom.bind(this);
-        this.onChangePrix = this.onChangePrix.bind(this);
-        this.onChangeInfo = this.onChangeInfo.bind(this);
-        this.onChangeContact = this.onChangeContact.bind(this);
-        this.onChangeImg = this.onChangeImg.bind(this);
-        
-        this.onSubmit = this.onSubmit.bind(this);
 
-        this.state = {
-            etat: '',
-            categorie: '',
-            nom: '',
-            prix: '',
-            info: '',
-            contact: '',
-            img:'',
+        this.onChangeTitle = this.onChangeTitle.bind(this);
+        this.onChangeImg= this.onChangeImg.bind(this);
+        this.onChangePrice = this.onChangePrice.bind(this);
+        this.onChangeInc = this.onChangeInc.bind(this);
+        this.onChangeInfo = this.onChangeInfo.bind(this);
+        this.onChangeCompany = this.onChangeCompany.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
+       
+       
+       
+        this.state ={
+            titleE:'',
+            imgE:'',
+            priceE:'',
+            incE:'',
+            companyE:'',
+            infoE:'',
+            inPanE : false
         }
     }
 
-    onChangeEtat(e) {
-        this.setState({
-            etat: e.target.value
-        });
+    onChangeTitle(e){
+       this.setState({
+           titleE : e.target.value
+       });
     }
 
-    onChangeCategorie(e) {
-      this.setState({
-          categorie: e.target.value
-      });
-  }
-
-    onChangeNom(e) {
+    onChangeImg(e){
         this.setState({
-            nom: e.target.value
+            imgE : e.target.value
         });
-    }
+     }
 
-    onChangePrix(e) {
-      this.setState({
-          prix: e.target.value
-      });
-  }
+     onChangePrice(e){
+        this.setState({
+            priceE : e.target.value
+        });
+     }
 
-  onChangeInfo(e) {
-    this.setState({
-        info: e.target.value
-    });
-    
-}
+     onChangeInc(e){
+        this.setState({
+            incE : e.target.value
+        });
+     }
 
+     onChangeCompany(e){
+        this.setState({
+            companyE : e.target.value
+        });
+     }
 
-onChangeContact(e) {
-  this.setState({
-      contact: e.target.value
-  });
+     onChangeInfo(e){
+        this.setState({
+            infoE : e.target.value
+        });
+     }
 
-   
-}
+     onSubmit(e){
+         e.preventDefault();
 
+         console.log(`form submited: `);
+         console.log(`titre: ${this.state.titleE}`);
+         console.log(`image: ${this.state.imgE}`);
+         console.log(`prix: ${this.state.priceE}`);
+         console.log(`increment: ${this.state.incE}`);
+         console.log(`company: ${this.state.companyE}`);
+         console.log(`info: ${this.state.infoE}`);
+         console.log(`Panier: ${this.state.inPanE}`);
 
-onChangeImg(e) {
-  this.setState({
-      img: e.target.value
-  });
+         const newEnchere = {
 
-   
-}
+            titleE: this.state.titleE,
+            imgE: this.state.imgE,
+            priceE: this.state.priceE,
+            incE: this.state.incE,
+            companyE: this.state.companyE,
+            infoE: this.state.infoE,
+            inPanE : this.state.inPanE
 
+         }
+
+         axios.post('http://localhost:4000/EbayDB/add',newEnchere)
+         .then(res => console.log(res.data));
+
+         this.setState({
+            titleE:'',
+            imgE:'',
+            priceE:'',
+            incE:'',
+            companyE:'',
+            infoE:'',
+            inPanE : false
+         })
+
+     }
  
-
-
-
-
-    onSubmit(e) {
-      
-      e.preventDefault();
-
-        console.log(`Form submitted:`);
-        console.log(`Etat: ${this.state.etat}`);
-        console.log(`Categorie: ${this.state.categorie}`);
-        console.log(`Nom: ${this.state.nom}`);
-        console.log(`Prix: ${this.state.prix}`);
-        console.log(`Info: ${this.state.info}`);
-        console.log(`Contact: ${this.state.contact}`);
-        console.log(`Image: ${this.state.img}`);
-
-        this.setState({
-            etat: '',
-            categorie: '',
-            nom: '',
-            prix: '',
-            info: '',
-            contact: '',
-            img:'',
-        });
-    }
 
     render() {
         return (
@@ -115,30 +114,23 @@ onChangeImg(e) {
                 <form onSubmit={this.onSubmit} >
 
                     <div class="form-group text-blue col-md-6">
-                        <label>Etat du produit: </label>
+                        <label>Pour faire une offre : </label>
                         <input  type="text"
                                 className="form-control"
-                                value={this.state.etat}
-                                onChange={this.onChangeEtat}
+                                value={this.state.incE}
+                                onChange={this.onChangeInc}
   
                                />
                     </div>
 
-                    <div class="form-group text-blue col-md-6">
-                        <label>Categorie: </label>
-                        <input  type="text"
-                                className="form-control"
-                                value={this.state.categorie}
-                                onChange={this.onChangeCategorie}
-  
-                                />
-                    </div>
+                    
                     <div class="form-group text-blue col-md-9">
-                        <label>Nom: </label>
+                        <label>Titre: </label>
                         <input  type="text"
                                 className="form-control"
-                                value={this.state.nom}
-                                onChange={this.onChangeNom}
+                                value={this.state.titleE}
+                                onChange={this.onChangeTitle}
+                                
                                 />
                     </div>
 
@@ -147,8 +139,9 @@ onChangeImg(e) {
                         <label>Prix (€): </label>
                         <input  type="text"
                                 className="form-control"
-                                value={this.state.prix}
-                                onChange={this.onChangePrix}
+                                value={this.state.priceE}
+                                onChange={this.onChangePrice}
+                                
                                 />
                     </div>
 
@@ -159,8 +152,9 @@ onChangeImg(e) {
                         <textarea 
                                 type="text" 
                                 className="form-control"
-                                value={this.state.info}
+                                value={this.state.infoE}
                                 onChange={this.onChangeInfo}
+                                
                                 rows = "5"
                                 
                                 />
@@ -171,8 +165,9 @@ onChangeImg(e) {
                         <label>Contact (tél): </label>
                         <input  type="text"
                                 className="form-control"
-                                value={this.state.contact}
-                                onChange={this.onChangeContact}
+                                value={this.state.companyE}
+                                onChange={this.onChangeCompany}
+                                
   
                                />
                     </div>
@@ -182,8 +177,9 @@ onChangeImg(e) {
                         <label>Image du produit: </label>
                         <input  type="file"
                                 className="form-control"
-                                value={this.state.img}
+                                value={this.state.imgE}
                                 onChange={this.onChangeImg}
+                                
   
                                />
                     </div>
@@ -192,11 +188,14 @@ onChangeImg(e) {
 
                     
 
+                 
+
+
 
 
                    
 
-                    <div className="form-group col-md-6 mt-2">
+                    <div className="form-group col-md-3 mt-2">
                         <Link to="/cartE">
                         <button className="btn btn-dark"> 
                         <span className="mr-2">
@@ -208,12 +207,11 @@ onChangeImg(e) {
 
 
                     
-                    <div className="form-group  ml-auto mt-2  ">
-                        <button className="btn btn-danger ">Annuler</button>
-                    </div>
+                    
 
-                    <div className="form-group   mt-2 ml-2 ">
-                        <button className="btn btn-warning" onClick={this.onSubmit}>valider la création</button>
+                    <div className="form-group     ">
+                     <input type="submit" value="Valider la creation" className="btn btn-warning mt-2" />
+                
                     </div>
 
                     

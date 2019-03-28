@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import {storeProducts, detailProduct } from './data';
 import {storeEncheres, detailEnchere } from './dataE';
+import dataE from './dataE';
+import axios from 'axios';
+
+
 
 
 const ProductContext = React.createContext();
@@ -8,6 +12,7 @@ const ProductContext = React.createContext();
 //Consumer
 
 class ProductProvider extends Component{
+
   state={
 
     
@@ -19,17 +24,17 @@ class ProductProvider extends Component{
    cartSubTotal :0,
    cartTax:0,
    cartTotal:0,
+
+   
    encheres : [],
    detailEnchere : detailEnchere,
-   cartE : storeEncheres,
+   cartE : [],
    
-   
-   
-
-
-  };
-
+    };
   
+   
+
+   
 
   //Products methods
 
@@ -177,22 +182,27 @@ class ProductProvider extends Component{
 
   //Encheres methodes
 
+
+  
+
  
 
-setEncheres = ()=>{
+ setEncheres = ()=>{
+   
   let TempEncheres = [];
   storeEncheres.forEach(item =>{
-    const singleItem = {...item};
-    TempEncheres = [...TempEncheres,singleItem];
+  const singleItem = {...item};
+  TempEncheres = [...TempEncheres,singleItem];
    })
+
      this.setState(() =>{
-     return{encheres : TempEncheres}
-   })
+          return{encheres : TempEncheres}
+                  })
 }
 
 
- getItemE = (idE) =>{
-   const enchere = this.state.encheres.find(item => item.idE===idE);
+ getItemE = (id) =>{
+   const enchere = this.state.encheres.find(item => item.idE===id);
    return enchere;
 
  };
