@@ -26,7 +26,7 @@ export default class listEnchere extends Component {
     }
 
     componentDidMount(){
-        console.log("wadiiiiii")
+       
         axios.get('http://localhost:4000/EbayDB/')
         .then(Response => {
             this.setState({encheres: Response.data});

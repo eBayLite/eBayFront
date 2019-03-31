@@ -13,7 +13,7 @@ export default class DetailsE extends Component {
       <ProductConsumer>
          {value =>{
             
-         const  {idE, companyE,imgE,infoE, priceE,titleE, inPanE, incE } = value.detailEnchere;
+         const  {_id, companyE,imgE,infoE, priceE,titleE, inPanE, incE } = value.detailEnchere;
          return(
           
           <div className="container py-5">
@@ -69,7 +69,7 @@ export default class DetailsE extends Component {
                    type="button "
                    class="btn btn-outline-warning ml-2"
                    disabled={inPanE?true:false}
-                   onClick={()=>{value.addToCartE(idE)}}
+                   onClick={()=>{value.addToCartE(_id)}}
                >  {inPanE?"dans enchere": "Faire une offre"}
                   </button>
                </Link>

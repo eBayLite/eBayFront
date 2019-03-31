@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 export default class Enchere extends Component {
   
   render() {
-    const {idE, titleE, imgE, priceE, DateD, DateF} =this.props.enchere;
+    const {_id, titleE, imgE, priceE,incE,infoE,companyE,inPanE} =this.props.enchere;
     return (
       <EnchereWrapper className="col-9 mx-auto col-md-6 col-lg-3 my-3">
 
@@ -25,11 +25,12 @@ export default class Enchere extends Component {
                className="img-container p-5"
               
                onClick={() =>
-               value.handleDetailE(idE)}>
+               value.handleDetailE(_id)}>
 
                <Link to="/detailsE">
                <img src={imgE} alt="enchere" className="card-img-top" />
                </Link>
+               
             </div>
             )}
 
@@ -41,10 +42,9 @@ export default class Enchere extends Component {
 
         
         <div className="card-footer d-flex justify-content-between">
-             <p className="align-self-center mb-0">
+         <p className="align-self-center mb-0">
              {titleE}
              </p>
-             
         </div>
          
          
@@ -55,7 +55,7 @@ export default class Enchere extends Component {
          </h5>
             
          <h6 className="mx-auto">
-            <Timer  dateD={DateD} dateF={DateF}/>
+            <Timer />
           </h6>
         </div>
 

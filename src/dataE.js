@@ -1,93 +1,9 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-
-
-const Enchere = props =>(
-
-  {
-     idE: props.enchere._id,
-     imgE: props.enchere.imgE,
-     titleE: props.enchere.incE,
-     priceE: props.enchere.priceE,
-     incE: props.enchere.incE,
-     infoE:props.enchere.infoE,
-     companyE: props.enchere.companyE,
-     inPanE: props.enchere.inPanE
-  });
-
-  
-  let storeEncheres = [];
-
-  class dataE extends Component {
-    constructor(props){
-      super(props);
-      this.state={
-        encheres:[]
-      }
-      
-    }
-
-      componentDidMount(){
-      
-        axios.get('http://localhost:4000/EbayDB/')
-        .then(Response => {
-            this.setState({encheres: Response.data});
-            this.state.encheres.forEach(element => {
-              const singleItem={...element};
-              storeEncheres = [...storeEncheres,singleItem];
-              
-            });
-        })
-        .catch(function(error){
-  
-            console.log(error);
-        })
-        console.log("componentdidmount executes",storeEncheres)
-    }
-
- /*   setEncheres = ()=>{
-      
-      this.encheres.forEach(element => {
-        const singleItem={...element};
-        storeEncheres = [...storeEncheres,singleItem];
-        
-      });
-          
-       }
-      
-    
-
-   encherListe(){
-     
-      return this.state.encheres.map(function(item,i){
-            return( 
-              <Enchere enchere={item} key={i}/>,
-              storeEncheres=[...storeEncheres,Enchere]
-            );
-      });
-    }
-     */
-    
-  render() {
-    
-    return (
-      <div>
-         
-      </div>
-    )
-  }
-}
-
-
-
 
  
-export {storeEncheres};
-
-
-
+export  const storeEncheres=[];
+  
 export const detailEnchere = {
-      idE: "1",
+      _id: "1",
       titleE: "Barbecue à charbon ",
       imgE: "imgE/En-1.jpg",
       priceE: 15,

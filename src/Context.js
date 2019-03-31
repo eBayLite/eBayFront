@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import {storeProducts, detailProduct } from './data';
 import {storeEncheres, detailEnchere } from './dataE';
-import dataE from './dataE';
+
 import axios from 'axios';
+
+
+
 
 
 
@@ -25,12 +28,86 @@ class ProductProvider extends Component{
    cartTax:0,
    cartTotal:0,
 
-   
+   store : [],
    encheres : [],
    detailEnchere : detailEnchere,
    cartE : [],
    
     };
+
+   
+
+   
+  
+  
+    setEncheres = ()=>{
+      
+      axios.get('http://localhost:4000/EbayDB/')
+      .then(Response => {
+        this.setState({encheres: Response.data});
+      })
+      .catch(function(error){
+    
+          console.log(error);
+      })
+      
+    
+  }
+  
+  
+   getItemE = (id) =>{
+     const enchere = this.state.encheres.find(item => item._id===id);
+     return enchere;
+  
+   };
+  
+  
+  
+  
+    handleDetailE = (id) =>{
+     const enchere = this.getItemE(id);
+     this.setState(() =>{
+       return {detailEnchere:enchere}
+     })
+    }
+  
+    addToCartE = _id  => {
+      let TempEncheres = [...this.state.encheres];
+      const index = TempEncheres.indexOf(this.getItem(_id));
+      const enchere =TempEncheres[index];
+      enchere.inPanE=true;
+      enchere.priceE=15;
+      enchere.incE=5;
+  
+      this.setState(()=>{
+        return{
+          encheres:TempEncheres, 
+          cartE :[...this.state.cartE,enchere]
+          
+        };
+      });
+      
+    }
+  
+   
+  
+    incrementE = (idE)=>{
+      let tempCart = [...this.state.cart];
+      const selectedEnchere = tempCart.find(item=> item.idE===idE)
+  
+      const index = tempCart.indexOf(selectedEnchere);
+      const enchere = tempCart[index];
+  
+      enchere.priceE = enchere.priceE +5;
+      
+  
+      this.setState(
+                   ()=>{return{panE:[...tempCart]}})
+    }
+  
+
+
+
   
    
 
@@ -182,75 +259,7 @@ class ProductProvider extends Component{
 
   //Encheres methodes
 
-
-  
-
  
-
- setEncheres = ()=>{
-   
-  let TempEncheres = [];
-  storeEncheres.forEach(item =>{
-  const singleItem = {...item};
-  TempEncheres = [...TempEncheres,singleItem];
-   })
-
-     this.setState(() =>{
-          return{encheres : TempEncheres}
-                  })
-}
-
-
- getItemE = (id) =>{
-   const enchere = this.state.encheres.find(item => item.idE===id);
-   return enchere;
-
- };
-
-
-
-
-  handleDetailE = (idE) =>{
-   const enchere = this.getItemE(idE);
-   this.setState(() =>{
-     return {detailEnchere:enchere}
-   })
-  }
-
-  addToCartE = idE  => {
-    let TempEncheres = [...this.state.encheres];
-    const index = TempEncheres.indexOf(this.getItem(idE));
-    const enchere =TempEncheres[index];
-    enchere.inPanE=true;
-    enchere.priceE=15;
-    enchere.incE=5;
-
-    this.setState(()=>{
-      return{
-        encheres:TempEncheres, 
-        cartE :[...this.state.cartE,enchere]
-        
-      };
-    });
-    
-  }
-
- 
-
-  incrementE = (idE)=>{
-    let tempCart = [...this.state.cart];
-    const selectedEnchere = tempCart.find(item=> item.idE===idE)
-
-    const index = tempCart.indexOf(selectedEnchere);
-    const enchere = tempCart[index];
-
-    enchere.priceE = enchere.priceE +5;
-    
-
-    this.setState(
-                 ()=>{return{panE:[...tempCart]}})
-  }
-
 
 
 
@@ -259,9 +268,9 @@ class ProductProvider extends Component{
 
   //commun methodes
 
-  componentDidMount(){
+   componentDidMount(){
     this.setProducts();
-    this.setEncheres();
+   this.setEncheres();
   }
 
     render(){
@@ -282,7 +291,7 @@ class ProductProvider extends Component{
             //Encheres
 
             handleDetailE : this.handleDetailE,
-            addCartE : this.addToCartE,
+            addToCartE : this.addToCartE,
             incrementE : this.incrementE
 
           }}>
