@@ -17,7 +17,8 @@ export default class EnchereList extends Component {
     
     return (
 
-            <React.Fragment>
+      <React.Fragment>
+        
             <div className="py-5">
             <div className="container">
             <TitleE name="Les " title="enchères en cours" />
@@ -25,21 +26,17 @@ export default class EnchereList extends Component {
             
             <ProductConsumer>
               {value =>{
-
-                return value.encheres.map(enchere => {
-                    return <Enchere key={enchere.idE} enchere={enchere}/>;
-
-                })
+                 return value.encheres.map(enchere => {
+                    return <Enchere
+                             key={enchere.idE}
+                             enchere={enchere}>
+                           </Enchere>;
+                  })
               }}
-
-
             </ProductConsumer>
-
             </div>
-            
             </div>
-
-          </div>
+            </div>
 
       </React.Fragment>
      

@@ -93,7 +93,7 @@ class ProductProvider extends Component{
   
     incrementE = (idE)=>{
       let tempCart = [...this.state.cart];
-      const selectedEnchere = tempCart.find(item=> item.idE===idE)
+      const selectedEnchere = tempCart.find(item=> item._id===idE)
   
       const index = tempCart.indexOf(selectedEnchere);
       const enchere = tempCart[index];

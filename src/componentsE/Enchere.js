@@ -14,36 +14,28 @@ export default class Enchere extends Component {
     const {_id, titleE, imgE, priceE,incE,infoE,companyE,inPanE} =this.props.enchere;
     return (
       <EnchereWrapper className="col-9 mx-auto col-md-6 col-lg-3 my-3">
-
-
-
+      
        <div className="card">
 
         <ProductConsumer>
            {value=>(
             <div 
                className="img-container p-5"
-              
-               onClick={() =>
+                onClick={() =>
                value.handleDetailE(_id)}>
-
                <Link to="/detailsE">
                <img src={imgE} alt="enchere" className="card-img-top" />
                </Link>
-               
             </div>
             )}
-
-       
-
         </ProductConsumer>
 
         {/* footer */}   
 
         
         <div className="card-footer d-flex justify-content-between">
-         <p className="align-self-center mb-0">
-             {titleE}
+             <p className="align-self-center mb-0">
+              {titleE}
              </p>
         </div>
          
@@ -54,14 +46,12 @@ export default class Enchere extends Component {
           Dérniere offre reçu:  {priceE}<span className="mr-1"> € </span>
          </h5>
             
-         <h6 className="mx-auto">
+          <h6 className="mx-auto">
             <Timer />
           </h6>
-        </div>
-
-
-
-       </div>
+         </div>
+         
+         </div>
       
       </EnchereWrapper>
     )
@@ -80,8 +70,6 @@ Enchere.propTypes = {
 }).isRequired
   
 }
-
-
 
 const EnchereWrapper = styled.div`
 .card{
