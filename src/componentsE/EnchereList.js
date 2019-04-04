@@ -18,9 +18,9 @@ export default class EnchereList extends Component {
     return (
 
       <React.Fragment>
-        
-            <div className="py-5">
-            <div className="container">
+
+            <div className="py-5 ">
+            <div className="container col-md-9">
             <TitleE name="Les " title="enchères en cours" />
             <div className="row">
             

@@ -24,7 +24,7 @@ export default class Enchere extends Component {
                 onClick={() =>
                value.handleDetailE(_id)}>
                <Link to="/detailsE">
-               <img src={imgE} alt="enchere" className="card-img-top" />
+               <img src={imgE} alt="Enchère" className="card-img-top" />
                </Link>
             </div>
             )}

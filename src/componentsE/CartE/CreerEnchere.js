@@ -210,8 +210,10 @@ export default class CreerEnchere extends Component {
                     
 
                     <div className="form-group     ">
+                    
                      <input type="submit" value="Valider la creation" className="btn btn-warning mt-2" />
-                
+                     <Link to ="/enchereList">
+                     </Link>
                     </div>
 
                     

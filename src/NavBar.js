@@ -16,13 +16,25 @@ class NavBar extends Component{
 
 
 
-      <NavWrapper className="navbar navbar-expand-sm  navbar-dark px-sm-5" >
+      <NavWrapper className="navbar navbar-expand-sm  navbar-dark px-sm-5 col-md-12" >
      
-      <Link to="/" >
+    
+
+        <ul className="navbar-nav align-items-center col-md-6 ">
+         
+         <li>
+
+         <Link to="/" >
          <img src={logos} alt="store" className="navbar-brand"></img>
         </Link>
+         </li>
 
-        <ul className="navbar-nav align-items-center">
+         <li className="nav-item ml-5">
+          <Link to="/accueil" className="nav-link" >
+           Accueil
+          </Link>
+         </li>
+
          <li className="nav-item ml-5">
           <Link to="/productList" className="nav-link" >
            Ventes
@@ -43,9 +55,9 @@ class NavBar extends Component{
 
          
         
-        <ul className="navbar-nav align-items-center ml-5  ">
+        <ul className="navbar-nav align-items-center ml-5 col-md-3  ">
            
-            <li className="nav-item ">
+            <li className="nav-item col-md-9  ">
             
              <span className="mr-0">
                <input type="text" class="form-control"  placeholder="Chercher..." />
@@ -54,7 +66,7 @@ class NavBar extends Component{
            </li>
             
         
-           <li className="nav-item ml-1">
+           <li className="nav-item col-md-3 ">
 
              <Link to="/productList" className="ml-auto ">
               <button type="button" class="btn btn-warning">
@@ -68,7 +80,7 @@ class NavBar extends Component{
         </ul>
 
 
-        <ul className="navbar-nav align-items-center ml-auto mt-0.1  ">
+        <ul className="navbar-nav align-items-center ml-auto mt-0.1 col-md-3 ">
         
          <Link to="/cartE" className="ml-5">
         <button type="button" class="btn btn-light btn-sm" >
@@ -92,7 +104,7 @@ class NavBar extends Component{
 
        
 
-       <Link to="/login" className="ml-2 mr-2">
+       <Link to="/login" className="ml-2 mr-2 ">
        <button type="button" class="btn btn-light btn-sm ">
             <span className="mr-2">
              <i className="fas fa-user" />
@@ -129,16 +141,16 @@ class NavBar extends Component{
 
 
 const NavWrapper = styled.nav`
-background:#464745;
+background:#000000;
 .nav-link{
     color:var(--mainWhitee) !important;
-    font-size:1.3rem
+    font-size:1.4rem
     text-transform:capitalize !important;
 }
 
 .nav-link:hover{
   color:var(--mainYellow) !important;
-  font-size:1.33rem
+  font-size:1.44rem
   text-transform:capitalize !important;
 }
 

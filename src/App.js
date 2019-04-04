@@ -25,6 +25,7 @@ import Login from './Accueil/Login';
 import Reinit from './Accueil/Reinit';
 import CreerEnchere from './componentsE/CartE/CreerEnchere'
 import listEnchere from '../src/componentsE/listEnchere';
+import Accueil from './Accueil/Accueil';
 
 import dataE from './dataE'
 
@@ -44,6 +45,7 @@ class App extends Component {
           <Route path="/login" component={Login} />
           <Route path="/reinit" component={Reinit} />
 
+          <Route path="/accueil" component={Accueil} />
           <Route path="/productList" component={ProductList} />
           <Route path="/details" component={Details} />
           <Route path="/cart" component={Cart} />
