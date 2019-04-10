@@ -23,11 +23,13 @@ import CartE from './componentsE/CartE/CartE';
 import Register from './Accueil/Register';
 import Login from './Accueil/Login';
 import Reinit from './Accueil/Reinit';
+import Profile from './Accueil/Profil';
 import CreerEnchere from './componentsE/CartE/CreerEnchere'
 import listEnchere from '../src/componentsE/listEnchere';
 import Accueil from './Accueil/Accueil';
 
 import dataE from './dataE'
+
 
 
 
@@ -43,6 +45,8 @@ class App extends Component {
           <Route exact path="/" component={Register} />
           <Route exact path="/l" component={listEnchere} />
           <Route path="/login" component={Login} />
+          <Route path="/register" component={Register} />
+          <Route path="/profile" component={Profile} />
           <Route path="/reinit" component={Reinit} />
 
           <Route path="/accueil" component={Accueil} />

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
 import logos from './logos.png';
 
 import styled from 'styled-components';
@@ -10,8 +10,96 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
-class NavBar extends Component{
-    render(){
+class Navbar extends Component{
+  logOut (e) {
+    e.preventDefault()
+    localStorage.removeItem('usertoken')
+    this.props.history.push(`/`)
+}
+
+render () {
+    const loginRegLink = (
+      <div>
+
+      
+  <ul className="navbar-nav align-items-center ml-auto mt-0.1 col-md-3 ">
+  <Link to="/cart" className="ml-2 ">
+  <button type="button" class="btn btn-light btn-sm">
+      <span className="mr-2">
+       <i className="fas fa-cart-plus" />
+      </span>
+     Mon panier
+  </button>
+ </Link>
+
+ <Link to="/login" className="ml-2 mr-2 ">
+ <button type="button" class="btn btn-light btn-sm ">
+      <span className="mr-2">
+       <i className="fas fa-user" />
+      </span>
+     Se Connecter
+  </button>
+ </Link>
+
+ <Link to="/register" className="ml-2 mr-2 ">
+ <button type="button" class="btn btn-light btn-sm ">
+      <span className="mr-2">
+       <i className="fas fa-user" />
+      </span>
+     S'enregistrer
+  </button>
+ </Link>
+ </ul>
+ </div>) 
+    
+const userLink = (
+  <ul className="navbar-nav align-items-center ml-auto mt-0.1 col-md-3 ">
+        
+         <Link to="/cartE" className="ml-5">
+        <button type="button" class="btn btn-light btn-sm" >
+            <span className="mr-2">
+             <i className="fas fa-hand-paper" />
+            </span>
+           Mes enchères
+        </button>
+       </Link>
+
+       
+        <Link to="/cart" className="ml-2 ">
+        <button type="button" class="btn btn-light btn-sm">
+            <span className="mr-2">
+             <i className="fas fa-cart-plus" />
+            </span>
+           Mon panier
+        </button>
+       
+       </Link>
+
+       
+
+       <Link to="/profile" className="ml-2 mr-2 ">
+       <button type="button" class="btn btn-light btn-sm ">
+            <span className="mr-2">
+             <i className="fas fa-user" />
+            </span>
+           Mes informations
+        </button>
+       </Link>
+
+       <Link to="" className="ml-2 mr-2 ">
+       <button type="button" class="btn btn-light btn-sm ">
+            <span className="mr-2">
+             <i className="fas fa-user" />
+            </span>
+            <a href="" onClick={this.logOut.bind(this)} className="">
+           Logout
+           </a>
+        </button>
+       </Link>
+
+       </ul>
+)
+
         return(
 
 
@@ -53,85 +141,9 @@ class NavBar extends Component{
          </li>
          </ul>
 
-         
-        
-        <ul className="navbar-nav align-items-center ml-5 col-md-3  ">
-           
-            <li className="nav-item col-md-9  ">
-            
-             <span className="mr-0">
-               <input type="text" class="form-control"  placeholder="Chercher..." />
-             </span>
-            
-           </li>
-            
-        
-           <li className="nav-item col-md-3 ">
-
-             <Link to="/productList" className="ml-auto ">
-              <button type="button" class="btn btn-warning">
-                <span className="mr-6">
-                  <i className="fas fa-search" />
-                </span>
-              </button>
-            </Link>
-           </li>    
-
-        </ul>
-
-
-        <ul className="navbar-nav align-items-center ml-auto mt-0.1 col-md-3 ">
-        
-         <Link to="/cartE" className="ml-5">
-        <button type="button" class="btn btn-light btn-sm" >
-            <span className="mr-2">
-             <i className="fas fa-hand-paper" />
-            </span>
-           Mes enchères
-        </button>
-       </Link>
-
-       
-        <Link to="/cart" className="ml-2 ">
-        <button type="button" class="btn btn-light btn-sm">
-            <span className="mr-2">
-             <i className="fas fa-cart-plus" />
-            </span>
-           Mon panier
-        </button>
-       
-       </Link>
-
-       
-
-       <Link to="/login" className="ml-2 mr-2 ">
-       <button type="button" class="btn btn-light btn-sm ">
-            <span className="mr-2">
-             <i className="fas fa-user" />
-            </span>
-           Se deconnecter
-        </button>
-       </Link>
-
-       </ul>
-
-
-         
+         {localStorage.usertoken ? userLink : loginRegLink}
 
       </NavWrapper>
-
-
-
-
-
-
-     
-
-
-
-
-
-
 
 
 );
@@ -158,4 +170,4 @@ background:#000000;
 
 
 
-export default NavBar;
+export default withRouter(Navbar);
