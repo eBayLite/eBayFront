@@ -19,10 +19,9 @@ class Navbar extends Component{
 
 render () {
     const loginRegLink = (
-      <div>
+<div className="ml-auto col-md-9">
 
-      
-  <ul className="navbar-nav align-items-center ml-auto mt-0.1 col-md-3 ">
+  <ul className="navbar-nav ml-auto mt-0.1 col-md-6">
   <Link to="/cart" className="ml-2 ">
   <button type="button" class="btn btn-light btn-sm">
       <span className="mr-2">
@@ -53,7 +52,7 @@ render () {
  </div>) 
     
 const userLink = (
-  <ul className="navbar-nav align-items-center ml-auto mt-0.1 col-md-3 ">
+  <ul className="navbar-nav align-items-center ml-auto mt-0.1 col-md-6 ">
         
          <Link to="/cartE" className="ml-5">
         <button type="button" class="btn btn-light btn-sm" >
@@ -108,7 +107,7 @@ const userLink = (
      
     
 
-        <ul className="navbar-nav align-items-center col-md-6 ">
+        <ul className="navbar-nav align-items-center col-md-3 ">
          
          <li>
 
@@ -123,20 +122,16 @@ const userLink = (
           </Link>
          </li>
 
+          {/*
          <li className="nav-item ml-5">
           <Link to="/productList" className="nav-link" >
            Ventes
           </Link>
-         </li>
+          </li>*/}
 
          <li className="nav-item ml-5">
           <Link to="/enchereList" className="nav-link" >
            Enchères
-          </Link>
-         </li>
-         <li className="nav-item ml-5">
-          <Link to="/l" className="nav-linka" >
-           Enchere test
           </Link>
          </li>
          </ul>

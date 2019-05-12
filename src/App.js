@@ -27,6 +27,7 @@ import Profile from './Accueil/Profil';
 import CreerEnchere from './componentsE/CartE/CreerEnchere'
 import listEnchere from '../src/componentsE/listEnchere';
 import Accueil from './Accueil/Accueil';
+import ListEnch from './componentsE/CartE/listench';
 
 import dataE from './dataE'
 
@@ -42,7 +43,7 @@ class App extends Component {
         <NavBar />
         
         <Switch>
-          <Route exact path="/" component={Register} />
+          <Route exact path="/" component={Accueil} />
           <Route exact path="/l" component={listEnchere} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
@@ -60,6 +61,7 @@ class App extends Component {
           <Route path="/cartE" component={CartE} />
 
           <Route path="/creerEnchere" component={CreerEnchere} />
+          <Route path="/listench" component={ListEnch} />          
 
           <Route component={Default} />
           
