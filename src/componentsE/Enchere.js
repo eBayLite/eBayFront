@@ -7,17 +7,63 @@ import Timer from './TimerE';
 import PropTypes from 'prop-types';
 
 
+function dateDiff(date1, date2){
+  var diff = {}                           // Initialisation du retour
+  var tmp = date2 - date1;
 
+  tmp = Math.floor(tmp/1000);             // Nombre de secondes entre les 2 dates
+  diff.sec = tmp % 60;                    // Extraction du nombre de secondes
+
+  tmp = Math.floor((tmp-diff.sec)/60);    // Nombre de minutes (partie entière)
+  diff.min = tmp % 60;                    // Extraction du nombre de minutes
+
+  tmp = Math.floor((tmp-diff.min)/60);    // Nombre d'heures (entières)
+  diff.hour = tmp % 24;                   // Extraction du nombre d'heures
+   
+  tmp = Math.floor((tmp-diff.hour)/24);   // Nombre de jours restants
+  diff.day = tmp;
+   
+  return diff;
+}
 
 export default class Enchere extends Component {
+
+  
  
   render() {
+
+
+
+
     const {_id, titleE, imgE, priceE,incE,infoE,companyE,inPanE,dateFin} =this.props.enchere;
     var tempDate = new Date();
-    var date = tempDate.getFullYear() + '-' + (tempDate.getMonth()+1) + '-' + tempDate.getDate() +' '+ tempDate.getHours()+':'+ tempDate.getMinutes()+':'+ tempDate.getSeconds();
-    var heur = dateFin-date;
+    var dateN = tempDate.getFullYear() + '-' + (tempDate.getMonth()+1) + '-' + tempDate.getDate() +' '+ tempDate.getHours()+':'+ tempDate.getMinutes()+':'+ tempDate.getSeconds();
+    var dateNow = new Date(dateN)
+
+    var dateFi =new Date(dateFin)
+    
+
+
+   
+   
+   
+
+   const Rest =  dateDiff(dateNow, dateFi);
+   console.log(Rest);
+
+  let H= Rest["hour"] + (Rest["day"]*24) ;
+ let M = Rest["min"];
+  let S = Rest["sec"];
+
+
+  
+
+
+
+
+
     return (
-      <EnchereWrapper className="col-9 mx-auto col-md-6 col-lg-3 my-3">
+       <EnchereWrapper className="col-9 mx-auto col-md-6 col-lg-3 my-3">
       
        <div className="card">
 
@@ -50,16 +96,9 @@ export default class Enchere extends Component {
          </h5>
             
           <h6 className="mx-auto">
-            <Timer heur={12} />
+            <Timer heur={H} minute={M} second={S} />
           </h6>
-          <h6>
-          
-            {date}
-          </h6>
-          <h6>
-          
-            {dateFin}
-          </h6>
+         
          
          </div>
          

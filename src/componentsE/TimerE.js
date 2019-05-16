@@ -2,49 +2,49 @@ import React, {Component} from 'react';
 
 
 class Timer extends Component {
-    constructor() {
-      super();
+    constructor(props) {
+      super(props);
       this.state = { 
-           seconds: 59,
-           minute : 59,
-           heur: 0
+        seconds :this.props.second,
+        heurs :this.props.heur,
+        minutes :this.props.minute,
           };
 
     }
 
-setHeur(){
-  this.setState({
-    heur:this.props.heur
-  });
-}   
+
+
+
+
   
 tick() {
-  this.setHeur();
 
-  if((this.state.seconds === 0)&&(this.state.minute === 0)&&(this.state.heur === 0)){
+
+
+  if((this.state.seconds === 0)&&(this.state.minutes === 0)&&(this.state.heurs === 0)){
         this.setState(state=>({
-             minute : state.minute - 0,
+             minutes : state.minutes - 0,
              seconds : state.seconds - 0,
-             heur : state.heur - 0
+             heurs: state.heurs - 0
         }));
  }
       
 else{
        if(this.state.seconds === 0){
                  
-              if(this.state.minute === 0){
+              if(this.state.minutes === 0){
                
                 this.setState(state=>({
-                  minute : state.minute  +59,
+                  minutes : state.minutes  +59,
                   seconds : state.seconds +59,
-                  heur : state.heur - 1
+                  heurs : state.heurs - 1
              }));
 
 
               }
               else{
                 this.setState(state=>({
-                  minute : state.minute  -1,
+                  minutes : state.minutes  -1,
                   seconds : state.seconds +59
                   
              }));
@@ -71,7 +71,7 @@ else{
     render() {
       return (
         <div>
-          Temps restant: {this.state.heur} h et {this.state.minute} min et {this.state.seconds} sec
+          Temps restant: {this.state.heurs} h et {this.state.minutes} min et {this.state.seconds} sec
         </div>
       );
     }
