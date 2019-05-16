@@ -5,6 +5,26 @@ import {Link} from 'react-router-dom';
 
 import Timer from './TimerE';
 
+
+function dateDiff(date1, date2){
+  var diff = {}                           // Initialisation du retour
+  var tmp = date2 - date1;
+
+  tmp = Math.floor(tmp/1000);             // Nombre de secondes entre les 2 dates
+  diff.sec = tmp % 60;                    // Extraction du nombre de secondes
+
+  tmp = Math.floor((tmp-diff.sec)/60);    // Nombre de minutes (partie entière)
+  diff.min = tmp % 60;                    // Extraction du nombre de minutes
+
+  tmp = Math.floor((tmp-diff.min)/60);    // Nombre d'heures (entières)
+  diff.hour = tmp % 24;                   // Extraction du nombre d'heures
+   
+  tmp = Math.floor((tmp-diff.hour)/24);   // Nombre de jours restants
+  diff.day = tmp;
+   
+  return diff;
+}
+
 export default class DetailsE extends Component {
   render() {
     return (
@@ -14,12 +34,41 @@ export default class DetailsE extends Component {
          {value =>{
             
          const  {_id, companyE,imgE,infoE, priceE,titleE, inPanE, incE, dateFin} = value.detailEnchere;
+
+         var tempDate = new Date();
+         var dateN = tempDate.getFullYear() + '-' + (tempDate.getMonth()+1) + '-' + tempDate.getDate() +' '+ tempDate.getHours()+':'+ tempDate.getMinutes()+':'+ tempDate.getSeconds();
+         var dateNow = new Date(dateN)
+     
+         var dateFi =new Date(dateFin)
+         
+     
+     
+        
+        
+        
+     
+        const Rest =  dateDiff(dateNow, dateFi);
+        console.log(Rest);
+     
+       let H= Rest["hour"] + (Rest["day"]*24) ;
+      let M = Rest["min"];
+       let S = Rest["sec"];
+     
+
+
+
+
+
+
+
+
+
          return(
           
           <div className="container py-5">
           
           <div className="mx-auto text-center">
-          <h1> <Timer heur={5}></Timer></h1>
+          <h1> <Timer heur={H} minute={M} second={S}></Timer></h1>
           </div>
           
        
