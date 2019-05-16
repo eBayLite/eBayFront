@@ -40,18 +40,21 @@ class NavBar extends Component{
            Ventes
           </Link>
          </li>
+        
 
          <li className="nav-item ml-5">
           <Link to="/enchereList" className="nav-link" >
            Enchères
           </Link>
          </li>
-         <li className="nav-item ml-5">
+
+
+         {/*<li className="nav-item ml-5">
           <Link to="/l" className="nav-linka" >
            Enchere test
           </Link>
-         </li>
-         </ul>
+         </li> */ }
+        </ul> 
 
          
         

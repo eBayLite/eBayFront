@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 import { ProductConsumer} from '../Context';
@@ -9,9 +10,12 @@ import PropTypes from 'prop-types';
 
 
 export default class Enchere extends Component {
-  
+ 
   render() {
-    const {_id, titleE, imgE, priceE,incE,infoE,companyE,inPanE} =this.props.enchere;
+    const {_id, titleE, imgE, priceE,incE,infoE,companyE,inPanE,dateFin} =this.props.enchere;
+    var tempDate = new Date();
+    var date = tempDate.getFullYear() + '-' + (tempDate.getMonth()+1) + '-' + tempDate.getDate() +' '+ tempDate.getHours()+':'+ tempDate.getMinutes()+':'+ tempDate.getSeconds();
+    var heur = dateFin-date;
     return (
       <EnchereWrapper className="col-9 mx-auto col-md-6 col-lg-3 my-3">
       
@@ -21,8 +25,7 @@ export default class Enchere extends Component {
            {value=>(
             <div 
                className="img-container p-5"
-                onClick={() =>
-               value.handleDetailE(_id)}>
+               onClick={() => value.handleDetailE(_id)}>
                <Link to="/detailsE">
                <img src={imgE} alt="Enchère" className="card-img-top" />
                </Link>
@@ -47,8 +50,17 @@ export default class Enchere extends Component {
          </h5>
             
           <h6 className="mx-auto">
-            <Timer />
+            <Timer heur={12} />
           </h6>
+          <h6>
+          
+            {date}
+          </h6>
+          <h6>
+          
+            {dateFin}
+          </h6>
+         
          </div>
          
          </div>

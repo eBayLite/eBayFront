@@ -49,7 +49,7 @@ class Details extends Component{
                                 
                               </Link>
                               
-
+{/* 
                               <button type="button" class="btn btn-warning ml-3" cart disabled={inCart?true:false}
                               onClick={()=>{
                                   value.addToCart(id);
@@ -59,7 +59,7 @@ class Details extends Component{
                               
                               {inCart?"Dans panier":"Ajouter au panier"}
                               </button>
-                              
+                              */}
 
 
                               

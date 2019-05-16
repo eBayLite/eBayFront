@@ -4,22 +4,22 @@ import React, {Component} from 'react';
 class Timer extends Component {
     constructor() {
       super();
-      this.state = {
-
-           
+      this.state = { 
            seconds: 59,
            minute : 59,
-           heur: 23
-           
-        
-        };
+           heur: 0
+          };
 
     }
 
-    
+setHeur(){
+  this.setState({
+    heur:this.props.heur
+  });
+}   
   
 tick() {
-
+  this.setHeur();
 
   if((this.state.seconds === 0)&&(this.state.minute === 0)&&(this.state.heur === 0)){
         this.setState(state=>({
@@ -27,7 +27,7 @@ tick() {
              seconds : state.seconds - 0,
              heur : state.heur - 0
         }));
-  }
+ }
       
 else{
        if(this.state.seconds === 0){
@@ -48,33 +48,22 @@ else{
                   seconds : state.seconds +59
                   
              }));
-               
-
-
+              
               }
 
        }else{
-
-        this.setState(state=>({
-          
-          seconds : state.seconds -1
+            this.setState(state=>({
+            seconds : state.seconds -1
           
      }));
        }
-
-
 }
 }
 
-    
-  
     componentDidMount() {
       this.interval = setInterval(() => this.tick(), 1000);
-      
-       }
+      }
 
- 
-  
     componentWillUnmount() {
       clearInterval(this.interval);
     }

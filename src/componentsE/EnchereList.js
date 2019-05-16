@@ -3,7 +3,6 @@ import Enchere from './Enchere';
 import TitleE from './TitleE';
 
 import { ProductConsumer } from '../Context';
-import dataE from '../dataE';
 
 
 

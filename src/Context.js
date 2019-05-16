@@ -44,7 +44,9 @@ class ProductProvider extends Component{
       
       axios.get('http://localhost:4000/EbayDB/')
       .then(Response => {
-        this.setState({encheres: Response.data});
+        this.setState({
+          encheres: Response.data
+        });
       })
       .catch(function(error){
     

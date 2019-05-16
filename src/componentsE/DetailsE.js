@@ -13,13 +13,13 @@ export default class DetailsE extends Component {
       <ProductConsumer>
          {value =>{
             
-         const  {_id, companyE,imgE,infoE, priceE,titleE, inPanE, incE } = value.detailEnchere;
+         const  {_id, companyE,imgE,infoE, priceE,titleE, inPanE, incE, dateFin} = value.detailEnchere;
          return(
           
           <div className="container py-5">
           
           <div className="mx-auto text-center">
-          <h1> <Timer></Timer></h1>
+          <h1> <Timer heur={5}></Timer></h1>
           </div>
           
        

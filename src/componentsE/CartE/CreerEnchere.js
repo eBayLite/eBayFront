@@ -14,6 +14,7 @@ export default class CreerEnchere extends Component {
         this.onChangeInc = this.onChangeInc.bind(this);
         this.onChangeInfo = this.onChangeInfo.bind(this);
         this.onChangeCompany = this.onChangeCompany.bind(this);
+        this.onChangeDateFin = this.onChangeDateFin.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
        
        
@@ -25,7 +26,8 @@ export default class CreerEnchere extends Component {
             incE:'',
             companyE:'',
             infoE:'',
-            inPanE : false
+            inPanE : false,
+            dateFin : ''
         }
     }
 
@@ -39,6 +41,8 @@ export default class CreerEnchere extends Component {
         this.setState({
             imgE : e.target.value
         });
+        
+       
      }
 
      onChangePrice(e){
@@ -65,6 +69,14 @@ export default class CreerEnchere extends Component {
         });
      }
 
+     onChangeDateFin(e){
+        this.setState({
+            dateFin : e.target.value
+        });
+     }
+
+
+
      onSubmit(e){
          e.preventDefault();
 
@@ -76,6 +88,7 @@ export default class CreerEnchere extends Component {
          console.log(`company: ${this.state.companyE}`);
          console.log(`info: ${this.state.infoE}`);
          console.log(`Panier: ${this.state.inPanE}`);
+         console.log(`dateFin: ${this.state.dateFin}`);
 
          const newEnchere = {
 
@@ -85,7 +98,8 @@ export default class CreerEnchere extends Component {
             incE: this.state.incE,
             companyE: this.state.companyE,
             infoE: this.state.infoE,
-            inPanE : this.state.inPanE
+            inPanE : this.state.inPanE,
+            dateFin : this.state.dateFin
 
          }
 
@@ -99,6 +113,7 @@ export default class CreerEnchere extends Component {
             incE:'',
             companyE:'',
             infoE:'',
+            dateFin : '',
             inPanE : false
          })
 
@@ -107,14 +122,25 @@ export default class CreerEnchere extends Component {
 
     render() {
         return (
-
-          
+        
             <div className="container   col-md-6" style={{marginTop: 20}}>
                 <h3 className="text-center mt-2">Créer une enchère</h3>
                 <form onSubmit={this.onSubmit} >
 
-                    <div class="form-group text-blue col-md-6">
-                        <label>Pour faire une offre : </label>
+                    
+
+                    <div class="form-group text-blue col-md-3">
+                        <label>Date de fin : </label>
+                        <input  type="date"
+                                className="form-control"
+                                value={this.state.dateFin}
+                                onChange={this.onChangeDateFin}
+  
+                               />
+                    </div>
+
+                    <div class="form-group text-blue col-md-3">
+                        <label>Minimum pour enchèrir : </label>
                         <input  type="text"
                                 className="form-control"
                                 value={this.state.incE}
@@ -154,9 +180,7 @@ export default class CreerEnchere extends Component {
                                 className="form-control"
                                 value={this.state.infoE}
                                 onChange={this.onChangeInfo}
-                                
                                 rows = "5"
-                                
                                 />
                     </div>
 
@@ -175,7 +199,7 @@ export default class CreerEnchere extends Component {
 
                     <div class="form-group text-blue col-md-9">
                         <label>Image du produit: </label>
-                        <input  type="file"
+                        <input  type="text"
                                 className="form-control"
                                 value={this.state.imgE}
                                 onChange={this.onChangeImg}
@@ -183,18 +207,7 @@ export default class CreerEnchere extends Component {
   
                                />
                     </div>
-
                     
-
-                    
-
-                 
-
-
-
-
-                   
-
                     <div className="form-group col-md-3 mt-2">
                         <Link to="/cartE">
                         <button className="btn btn-dark"> 
@@ -204,33 +217,16 @@ export default class CreerEnchere extends Component {
                         Retour à mes enchere</button>
                         </Link>
                     </div>
-
-
                     
-                    
-
                     <div className="form-group     ">
                     
                      <input type="submit" value="Valider la creation" className="btn btn-warning mt-2" />
                      <Link to ="/enchereList">
                      </Link>
                     </div>
-
                     
-                    
-
-
-
-                    
-                    
-
-                   
-
-                    
-                </form>
-            </div>
-
-            
-        )
+             </form>
+     </div>
+     )
     }
 }
