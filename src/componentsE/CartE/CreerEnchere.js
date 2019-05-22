@@ -15,6 +15,8 @@ export default class CreerEnchere extends Component {
         this.onChangeInfo = this.onChangeInfo.bind(this);
         this.onChangeCompany = this.onChangeCompany.bind(this);
         this.onChangeDateFin = this.onChangeDateFin.bind(this);
+        this.onChangeOffre=this.onChangeOffre.bind(this);
+       
         this.onSubmit = this.onSubmit.bind(this);
        
        
@@ -27,7 +29,10 @@ export default class CreerEnchere extends Component {
             companyE:'',
             infoE:'',
             inPanE : false,
-            dateFin : ''
+            dateFin : '',
+            offre:0,
+            disponible:true
+            
         }
     }
 
@@ -69,10 +74,18 @@ export default class CreerEnchere extends Component {
         });
      }
 
+     onChangeOffre(e){
+        this.setState({
+            offre : e.target.value
+        });
+     }
+
      onChangeDateFin(e){
         this.setState({
             dateFin : e.target.value
         });
+
+        
      }
 
 
@@ -89,6 +102,9 @@ export default class CreerEnchere extends Component {
          console.log(`info: ${this.state.infoE}`);
          console.log(`Panier: ${this.state.inPanE}`);
          console.log(`dateFin: ${this.state.dateFin}`);
+         console.log(`offre: ${this.state.offre}`);
+         console.log(`disponible: ${this.state.disponible}`);
+
 
          const newEnchere = {
 
@@ -99,7 +115,9 @@ export default class CreerEnchere extends Component {
             companyE: this.state.companyE,
             infoE: this.state.infoE,
             inPanE : this.state.inPanE,
-            dateFin : this.state.dateFin
+            dateFin : this.state.dateFin,
+            offre : this.state.priceE,
+            disponible:this.state.disponible
 
          }
 
@@ -114,7 +132,8 @@ export default class CreerEnchere extends Component {
             companyE:'',
             infoE:'',
             dateFin : '',
-            inPanE : false
+            inPanE : false,
+            
          })
 
      }
@@ -140,7 +159,7 @@ export default class CreerEnchere extends Component {
                     </div>
 
                     <div class="form-group text-blue col-md-3">
-                        <label>Minimum pour enchèrir : </label>
+                        <label>Minimum pour enchèrir (€) : </label>
                         <input  type="text"
                                 className="form-control"
                                 value={this.state.incE}
@@ -162,7 +181,7 @@ export default class CreerEnchere extends Component {
 
 
                     <div class="form-group text-blue col-md-3">
-                        <label>Prix (€): </label>
+                        <label>Prix de départ (€): </label>
                         <input  type="text"
                                 className="form-control"
                                 value={this.state.priceE}
@@ -209,7 +228,7 @@ export default class CreerEnchere extends Component {
                     </div>
                     
                     <div className="form-group col-md-3 mt-2">
-                        <Link to="/cartE">
+                        <Link to="/listEnchere">
                         <button className="btn btn-dark"> 
                         <span className="mr-2">
                         <i class="fas fa-chevron-left" />

@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import {Link } from 'react-router-dom';
 import axios from 'axios';
+import NavBar2 from '../NavBar2'
 
 const Enchere = props =>(
 
     <tr>
         <td>{props.enchere.titleE}</td>
-        <td>{props.enchere.incE}</td>
-        <td>{props.enchere.inPanE}</td>
         <td>{props.enchere.priceE}</td>
+        <td>{props.enchere.offre}</td>
         <td>{props.enchere.infoE}</td>
         <td>{props.enchere.companyE}</td>
-        <td>{props.enchere.imgE}</td>
+        
         
     </tr>
 )
@@ -44,26 +44,33 @@ export default class listEnchere extends Component {
     }
   render() { 
     return (
-      <div>
-        <h3 className="text-center mt-5 mb-5">La liste des enchères</h3>
+         <div className=" container col-md-9">
+
+        
+        
+        <div className="col-md-12">
+        <h3 className="text-center mt-5 mb-5 ">Mes enchères</h3>
         <table className="table table-striped col-md-12 ml-auto" style={{ marginTop: 20 }}>
                     <thead>
                         <tr>
-                            <th>titre</th>
-                            <th>pour encherer</th>
+                            <th>Produit</th>
+                            <th>Prix de départ</th>
+                            <th>Mon offre</th>
+                            <th>infos sur le produit</th>
+                            <th>Vendeur</th>
                             
                             
-                            <th>in pan</th>
-                            <th>prix</th>
-                            <th>info</th>
-                            <th>contact</th>
-                            <th>img</th>
                         </tr>
                     </thead>
                     <tbody className="col-md-12">
                         { this.enchereList() }
                     </tbody>
                 </table>
+
+                
+      </div>
+      <NavBar2 />
+
       </div>
     )
   }

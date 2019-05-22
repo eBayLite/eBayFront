@@ -4,6 +4,7 @@ import CartColumnsE from './CartColumnsE';
 import EmptyCartE from './EmptyCartE';
 import {ProductConsumer} from '../../Context';
 import NavBar2 from '../../NavBar2';
+import listEnchere from '../listEnchere';
 
 
 export default class CartE extends Component {
@@ -19,7 +20,10 @@ export default class CartE extends Component {
 
                 <TitleE name="Vos " title="Enchères" />
                 <NavBar2 />
-                <CartColumnsE />
+               
+
+               
+
 
                </React.Fragment>
               

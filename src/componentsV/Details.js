@@ -33,7 +33,7 @@ class Details extends Component{
 
 
                       <div className="col-10 mx-auto col-md-6 my-3 text-capitalize">
-                         <h3>Model : {title}</h3>
+                         <h3 className="titreVD">Model : {title}</h3>
                          <h4 className="text-title text-uppercase text-muted mt-3 mb-2"> Made by :<span className="text-uppercase">{company}</span></h4>
                          <h4 className="text-blue"><strong> Prix : {price} <span>€</span></strong></h4>
                          <p className="text-capitalize font-weight-bold mt-3 mb-0"> Informations sur le produit :</p>
@@ -49,7 +49,7 @@ class Details extends Component{
                                 
                               </Link>
                               
-{/* 
+
                               <button type="button" class="btn btn-warning ml-3" cart disabled={inCart?true:false}
                               onClick={()=>{
                                   value.addToCart(id);
@@ -59,7 +59,7 @@ class Details extends Component{
                               
                               {inCart?"Dans panier":"Ajouter au panier"}
                               </button>
-                              */}
+                          
 
 
                               

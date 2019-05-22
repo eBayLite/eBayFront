@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import {ProductConsumer} from '../Context';
 import {Link} from 'react-router-dom';
+import styled from 'styled-components';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 import Timer from './TimerE';
@@ -9,6 +11,14 @@ import Timer from './TimerE';
 function dateDiff(date1, date2){
   var diff = {}                           // Initialisation du retour
   var tmp = date2 - date1;
+
+  if (tmp<0){
+    diff.sec=0;
+    diff.min=0;
+    diff.hour=0;
+    diff.day=0
+  }
+  else{
 
   tmp = Math.floor(tmp/1000);             // Nombre de secondes entre les 2 dates
   diff.sec = tmp % 60;                    // Extraction du nombre de secondes
@@ -21,9 +31,14 @@ function dateDiff(date1, date2){
    
   tmp = Math.floor((tmp-diff.hour)/24);   // Nombre de jours restants
   diff.day = tmp;
+}
    
   return diff;
 }
+
+ 
+
+
 
 export default class DetailsE extends Component {
   render() {
@@ -33,67 +48,48 @@ export default class DetailsE extends Component {
       <ProductConsumer>
          {value =>{
             
-         const  {_id, companyE,imgE,infoE, priceE,titleE, inPanE, incE, dateFin} = value.detailEnchere;
+         const  {_id, companyE,imgE,infoE, priceE,titleE, inPanE, incE, dateFin,disponible,offre} = value.detailEnchere;
 
          var tempDate = new Date();
          var dateN = tempDate.getFullYear() + '-' + (tempDate.getMonth()+1) + '-' + tempDate.getDate() +' '+ tempDate.getHours()+':'+ tempDate.getMinutes()+':'+ tempDate.getSeconds();
          var dateNow = new Date(dateN)
      
          var dateFi =new Date(dateFin)
+         const Rest =  dateDiff(dateNow, dateFi);
+         console.log(Rest);
+     
+         let H= Rest["hour"] + (Rest["day"]*24) ;
+         let M = Rest["min"];
+         let S = Rest["sec"];
          
-     
-     
-        
-        
-        
-     
-        const Rest =  dateDiff(dateNow, dateFi);
-        console.log(Rest);
-     
-       let H= Rest["hour"] + (Rest["day"]*24) ;
-      let M = Rest["min"];
-       let S = Rest["sec"];
-     
-
-
-
-
-
-
-
-
-
+         
+         
          return(
+        
+        <div className="container py-5">
           
-          <div className="container py-5">
-          
-          <div className="mx-auto text-center">
-          <h1> <Timer heur={H} minute={M} second={S}></Timer></h1>
-          </div>
+            
           
        
        
-         {/* title */}
-         <div className="row">
-           <div className="col-10 mx-auto text-center text-slanted my-5">
-             <h1>{titleE}</h1>
-           </div>
-
-         </div>
-         {/*  end title */}
+            {/* title */}
+            <div className="row">
+               <div className="col-10 mx-auto text-center text-slanted my-5">
+                <h1 className="titreED">{titleE}</h1>
+                <p className="text-muted lead ">{infoE} </p>
+               </div>
+               
+             </div>
+            {/*  end title */}
 
 
           {/*  Info enchere */}
-         <div className="row">
+          <div className="row">
+
+
              <div className="col-10 mx-auto col-md-6 my-3 text-capitalized">
                <img src={imgE} className="img-fluid" alt="enchere"/>
-               <h2 className="text-blue mt-5 ">
-               <strong>Dernière offre reçu: {priceE} <span> €</span></strong>
-                </h2>
-                 <h4 className="mx-auto mt-2 ">
-                 <strong>Pour enchèrer: {incE} <span> €</span></strong>
-
-                 </h4>
+               
              </div>
 
               
@@ -104,26 +100,62 @@ export default class DetailsE extends Component {
                 <p className="text-capitalize font-weight-bold mt-3 mb-0">A propos du produit :</p>
                 <p className="text-muted lead ">{infoE} </p>
 
+                <div className="mx-auto text-center mt-3">
+             <h1> <Timer
+                    heur={H} 
+                    minute={M} 
+                    second={S} 
+                    color={((H===0)&&(M===0)&&(S===0))?"timerF":"timer"} 
+                    message={((H===0)&&(M===0)&&(S===0))?"* L'enchère n'est plus disponible *":""}></Timer></h1>
+            </div>
+
              
              
                {/* les boutons */}
 
-             <div>
-               <Link to="/enchereList">
-                <button type="button" class="btn btn-outline-secondary"><i className="fas fa-arrow-left" /> Retour au enchères</button>
-               </Link>
+              <div className="mt-3 col-md-12">
+                
+                
+                 
+              
 
-               <Link to="cartE">
-                <button 
+               
+                
+                <span className="btn btn-black mx-1 col-md-3 " >{offre}</span>
+                <span className="btn btn-black mx-1 col-md-3"  ><i className="fas fa-plus" /></span>
+               
+            
+                <Link to="detailsE">
+                 <button 
                    type="button "
-                   class="btn btn-outline-warning ml-2"
-                   disabled={inPanE?true:false}
-                   onClick={()=>{value.addToCartE(_id)}}
-               >  {inPanE?"dans enchere": "Faire une offre"}
-                  </button>
+                   class="btn btn-info col-md-4 "
+                   disabled={((H===0)&&(M===0)&&(S===0))?true:false}
+                   /*onClick={()=>{value.addToCartE(_id)}}*/
+               >  {((H===0)&&(M===0)&&(S===0))?"Indisponible": "Faire une offre"}
+                 </button>
                </Link>
+               
+               
 
+               </div>
+               <h2 className="text-blue mt-5 ">
+                 <strong>Dernière offre reçu: {offre} <span> €</span></strong>
+               </h2>
+                 <h4 className="mx-auto mt-2 ">
+                 <small className="MinPourEncherire">Minimum pour enchèrir: {incE} <span> €</span></small>
+                 </h4>
+
+            <div className="mt-5 col-md-12">
+            <Link to="/enchereList">
+              <button 
+              type="button" 
+              class="btn btn-outline-secondary col-md-12">
+                <i className="fas fa-arrow-left" /> Retour au enchères</button>
+            </Link>
             </div>
+
+
+
             </div>
             </div>
             </div>

@@ -11,6 +11,14 @@ function dateDiff(date1, date2){
   var diff = {}                           // Initialisation du retour
   var tmp = date2 - date1;
 
+  if (tmp<0){
+    diff.sec=0;
+    diff.min=0;
+    diff.hour=0;
+    diff.day=0
+  }
+  else{
+
   tmp = Math.floor(tmp/1000);             // Nombre de secondes entre les 2 dates
   diff.sec = tmp % 60;                    // Extraction du nombre de secondes
 
@@ -22,6 +30,7 @@ function dateDiff(date1, date2){
    
   tmp = Math.floor((tmp-diff.hour)/24);   // Nombre de jours restants
   diff.day = tmp;
+}
    
   return diff;
 }
@@ -35,7 +44,7 @@ export default class Enchere extends Component {
 
 
 
-    const {_id, titleE, imgE, priceE,incE,infoE,companyE,inPanE,dateFin} =this.props.enchere;
+    const {_id, titleE, imgE, priceE,incE,infoE,companyE,inPanE,dateFin,offre} =this.props.enchere;
     var tempDate = new Date();
     var dateN = tempDate.getFullYear() + '-' + (tempDate.getMonth()+1) + '-' + tempDate.getDate() +' '+ tempDate.getHours()+':'+ tempDate.getMinutes()+':'+ tempDate.getSeconds();
     var dateNow = new Date(dateN)
@@ -83,20 +92,31 @@ export default class Enchere extends Component {
 
         
         <div className="card-footer d-flex justify-content-between">
-             <p className="align-self-center mb-0">
+             
+               <h4 className="EnchereTitle">
               {titleE}
-             </p>
+              </h4>
+             
         </div>
          
          
         <div>
 
+        
+
          <h5 className="text-blue font-italic rm-2 ">
-          Dérniere offre reçu:  {priceE}<span className="mr-1"> € </span>
+          Dernier offre reçu:  {offre}<span className="mr-1"> € </span>
          </h5>
             
           <h6 className="mx-auto">
-            <Timer heur={H} minute={M} second={S} />
+            <Timer 
+            heur={H} 
+            minute={M} 
+            second={S} 
+            color={((H===0)&&(M===0)&&(S===0))?"timerF":"timer"}
+            messageE={((H===0)&&(M===0)&&(S===0))?"Indisponible":" "} />
+
+
           </h6>
          
          
@@ -134,7 +154,7 @@ const EnchereWrapper = styled.div`
 }
 &:hover{
  .card{
-     background : rgba(233,228,246);
+     background : rgba(255,255,255);
      border : 0.04rem solid rgba(0,0,0,0.2);
      box-shadow : 2px 2px 5px 0px rgba(0,0,0,0.2)
  } 

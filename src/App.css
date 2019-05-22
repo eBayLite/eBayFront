@@ -9,7 +9,7 @@
  --mainDark:#232528;
  --mainYellow:#ffa400;
  --mainGreen:#5cf34e;
- --mainBar:#b6b4b4;
+ --mainBar:#f3f3f3;
 
  
 }
@@ -227,6 +227,39 @@ input.error {
 }
 
 .createAccount small {
-  color: #999;
+  color: #999999;
   font-weight: lighter;
+}
+
+
+
+/*  Encheres */
+.timer{
+  color: #28aa00
+  
+}
+
+.timerF{
+  color: #e91111
+}
+
+.messageEF{
+  color: #e9111c
+}
+
+.titreED{
+  color: #f35f09
+  
+}
+
+.MinPourEncherire{
+  color:#06706b
+}
+
+.Compte{
+  color: #fdfafa
+}
+
+.EnchereTitle{
+  color: #480ee9
 }

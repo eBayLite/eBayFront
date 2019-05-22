@@ -20,7 +20,7 @@ export default class EnchereList extends Component {
 
             <div className="py-5 ">
             <div className="container col-md-9">
-            <TitleE name="Les " title="enchères en cours" />
+            <TitleE name="Liste " title="des enchères" />
             <div className="row">
             
             <ProductConsumer>

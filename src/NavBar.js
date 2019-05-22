@@ -4,6 +4,7 @@ import logos from './logos.png';
 
 import styled from 'styled-components';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import SimpleMenu from './Menu';
 
 
 
@@ -49,11 +50,11 @@ class NavBar extends Component{
          </li>
 
 
-         {/*<li className="nav-item ml-5">
+        {/* <li className="nav-item ml-5">
           <Link to="/l" className="nav-linka" >
            Enchere test
           </Link>
-         </li> */ }
+        </li> */} 
         </ul> 
 
          
@@ -85,7 +86,7 @@ class NavBar extends Component{
 
         <ul className="navbar-nav align-items-center ml-auto mt-0.1 col-md-3 ">
         
-         <Link to="/cartE" className="ml-5">
+        {/*  <Link to="/listEnchere" className="ml-5">
         <button type="button" class="btn btn-light btn-sm" >
             <span className="mr-2">
              <i className="fas fa-hand-paper" />
@@ -115,6 +116,22 @@ class NavBar extends Component{
            Se deconnecter
         </button>
        </Link>
+       */}
+
+       <Link to="/cart" className="ml-auto">
+        <button type="button" class="btn btn-light btn-sm">
+            <span className="mr-2">
+             <i className="fas fa-cart-plus" />
+            </span>
+           Mon panier
+        </button>
+       
+       </Link>
+
+
+      <li className="ml-2">
+       <SimpleMenu/>
+       </li>
 
        </ul>
 
@@ -144,7 +161,7 @@ class NavBar extends Component{
 
 
 const NavWrapper = styled.nav`
-background:#000000;
+background:#00000f;
 .nav-link{
     color:var(--mainWhitee) !important;
     font-size:1.4rem

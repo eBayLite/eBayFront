@@ -18,7 +18,7 @@ class NavBar2 extends Component{
             <span className="mr-2">
              <i className="fas fa-plus" />
             </span>
-           Créer une enchère
+           Ajouter une nouvelle enchère
         </button>
        </Link>
         

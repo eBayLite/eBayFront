@@ -41,7 +41,7 @@ class App extends Component {
         
         <Switch>
           <Route exact path="/" component={Register} />
-          <Route exact path="/l" component={listEnchere} />
+          <Route exact path="/listEnchere" component={listEnchere} />
           <Route path="/login" component={Login} />
           <Route path="/reinit" component={Reinit} />
 
