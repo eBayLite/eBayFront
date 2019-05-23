@@ -129,7 +129,7 @@ export default class CreerEnchere extends Component {
             imgE:'',
             priceE:'',
             incE:'',
-            companyE:'',
+            /*companyE:'',*/
             infoE:'',
             dateFin : '',
             inPanE : false,

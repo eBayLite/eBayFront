@@ -40,7 +40,7 @@ class App extends Component {
         <NavBar />
         
         <Switch>
-          <Route exact path="/" component={Register} />
+          <Route exact path="/" component={Accueil} />
           <Route exact path="/listEnchere" component={listEnchere} />
           <Route path="/login" component={Login} />
           <Route path="/reinit" component={Reinit} />
