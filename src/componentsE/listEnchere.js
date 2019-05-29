@@ -14,7 +14,8 @@ const Enchere = props =>(
         <td>{props.enchere.companyE}</td>
         <td>{props.enchere.imgE}</td>
         <td>{props.enchere.date}</td>
-        <td>{props.enchere.endDate}</td>        
+        <td>{props.enchere.endDate}</td>
+        <td>{props.enchere.stateE}</td>
         
     </tr>
 )
@@ -38,11 +39,11 @@ export default class listEnchere extends Component {
             this.setState({encheres: findresponse.encheres});
         });
 
-        this.interval = x;
+        /*this.interval = x;
 
         var x = setInterval(function() {
 
-            /*--------------------------
+            //--------------------------
              // Get todays date and time
              var now = Date.now();
             // Set the date we're counting down to
@@ -50,7 +51,7 @@ export default class listEnchere extends Component {
              // Find the distance between now and the count down date
               var distance = countDownDate - now;
               ---------------------------
-              */
+              
             
             var actualTime = new Date(Date.now());
             console.log(actualTime);
@@ -70,7 +71,7 @@ export default class listEnchere extends Component {
               document.getElementById("demo").innerHTML = hours + "h "
               + minutes + "m " + seconds + "s ";
                
-            }, 1000);
+            }, 1000); */
        
         /*
         axios.get('http://localhost:4000/EbayDB/')
@@ -104,8 +105,6 @@ export default class listEnchere extends Component {
                         <tr>
                             <th>Nom du produit</th>
                             <th>Limite prix</th>
-                            
-                            
                             <th>Est dans un panier</th>
                             <th>Prix de départ</th>
                             <th>Description produit</th>

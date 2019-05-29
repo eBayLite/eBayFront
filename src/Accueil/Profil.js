@@ -18,6 +18,7 @@ class Profile extends Component {
             nom: decoded.nom,
             prenom: decoded.prenom,
             email: decoded.email,
+            encheres: decoded.encheres
         })
     }
 
@@ -52,7 +53,11 @@ class Profile extends Component {
                     </div>
                     <table className="table col-md-6 mx-auto">
                         <tbody>
-                        </tbody>
+                        <tr>
+                            <td>Enchere:</td>
+                            <td>{this.state.encheres}</td>
+                        </tr>
+                    </tbody>
                     </table>
                 </div>
 
