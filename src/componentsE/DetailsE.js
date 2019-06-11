@@ -3,6 +3,7 @@ import {ProductConsumer} from '../Context';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import axios from 'axios';
 
 
 import Timer from './TimerE';
@@ -41,14 +42,25 @@ function dateDiff(date1, date2){
 
 
 export default class DetailsE extends Component {
+
+
   render() {
     return (
-
-
-      <ProductConsumer>
+        <ProductConsumer>
          {value =>{
-            
-         const  {_id, companyE,imgE,infoE, priceE,titleE, inPanE, incE, dateFin,disponible,offre} = value.detailEnchere;
+           const {
+           _id, 
+           companyE,
+           imgE,
+           infoE, 
+           priceE,
+           titleE, 
+           inPanE, 
+           incE, 
+           dateFin,
+           disponible,
+           offre
+          } = value.detailEnchere;
 
          var tempDate = new Date();
          var dateN = tempDate.getFullYear() + '-' + (tempDate.getMonth()+1) + '-' + tempDate.getDate() +' '+ tempDate.getHours()+':'+ tempDate.getMinutes()+':'+ tempDate.getSeconds();
@@ -68,10 +80,6 @@ export default class DetailsE extends Component {
         
         <div className="container py-5">
           
-            
-          
-       
-       
             {/* title */}
             <div className="row">
                <div className="col-10 mx-auto text-center text-slanted my-5">
@@ -82,15 +90,11 @@ export default class DetailsE extends Component {
              </div>
             {/*  end title */}
 
-
-          {/*  Info enchere */}
-          <div className="row">
-
-
-             <div className="col-10 mx-auto col-md-6 my-3 text-capitalized">
+            {/*  Info enchere */}
+            <div className="row">
+              <div className="col-10 mx-auto col-md-6 my-3 text-capitalized">
                <img src={imgE} className="img-fluid" alt="enchere"/>
-               
-             </div>
+              </div>
 
               
                {/* enchere texte  */}
@@ -113,32 +117,21 @@ export default class DetailsE extends Component {
              
                {/* les boutons */}
 
-              <div className="mt-3 col-md-12">
-                
-                
-                 
-              
-
-               
-                
-                <span className="btn btn-black mx-1 col-md-3 " >{offre}</span>
-                <span className="btn btn-black mx-1 col-md-3"  ><i className="fas fa-plus" /></span>
-               
-            
-                <Link to="detailsE">
-                 <button 
-                   type="button "
-                   class="btn btn-info col-md-4 "
-                   disabled={((H===0)&&(M===0)&&(S===0))?true:false}
-                   /*onClick={()=>{value.addToCartE(_id)}}*/
-               >  {((H===0)&&(M===0)&&(S===0))?"Indisponible": "Faire une offre"}
-                 </button>
-               </Link>
+             
+  
+                 <Link to={"/detailsEE/"+_id}>
+                <div className="col-md-12">
+                <input 
+                className="btn btn-warning col-md-12 mt-2"
+                type="submit" 
+                disabled={((H===0)&&(M===0)&&(S===0))?true:false}
+                value={((H===0)&&(M===0)&&(S===0))?"Indisponible": "Faire une offre"} 
+                 />  
+                </div>
+                </Link>
                
                
-
-               </div>
-               <h2 className="text-blue mt-5 ">
+                <h2 className="text-blue mt-5 ">
                  <strong>Dernière offre reçu: {offre} <span> €</span></strong>
                </h2>
                  <h4 className="mx-auto mt-2 ">

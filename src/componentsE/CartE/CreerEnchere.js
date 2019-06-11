@@ -129,7 +129,7 @@ export default class CreerEnchere extends Component {
             imgE:'',
             priceE:'',
             incE:'',
-            /*companyE:'',*/
+            companyE:'',
             infoE:'',
             dateFin : '',
             inPanE : false,
@@ -189,9 +189,7 @@ export default class CreerEnchere extends Component {
                                 
                                 />
                     </div>
-
-
-
+                    
                     <div class="form-group text-blue col-md-12  " >
                         <label>Détails: </label>
                         <textarea 

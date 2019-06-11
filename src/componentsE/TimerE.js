@@ -69,20 +69,15 @@ tick() {
         <div>
         <div className={this.state.color}>
 
-          <h5>Termine dans: {this.state.heurs} h et {this.state.minutes} min et {this.state.seconds} sec    
-         </h5>
-         <h6>{this.state.messageE}</h6>
+          <h6>Termine dans: {this.state.heurs} h et {this.state.minutes} min et {this.state.seconds} sec {this.state.messageE}  
+          </h6>
+         
         
         </div>
 
         <div className="messageEF">
           <h5>{this.state.message}</h5>
         </div>
-
-        
-
-          
-        
 
         </div>
       );

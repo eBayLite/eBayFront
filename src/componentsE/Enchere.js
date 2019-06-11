@@ -40,37 +40,19 @@ export default class Enchere extends Component {
   
  
   render() {
-
-
-
-
     const {_id, titleE, imgE, priceE,incE,infoE,companyE,inPanE,dateFin,offre} =this.props.enchere;
     var tempDate = new Date();
     var dateN = tempDate.getFullYear() + '-' + (tempDate.getMonth()+1) + '-' + tempDate.getDate() +' '+ tempDate.getHours()+':'+ tempDate.getMinutes()+':'+ tempDate.getSeconds();
     var dateNow = new Date(dateN)
 
     var dateFi =new Date(dateFin)
+    const Rest =  dateDiff(dateNow, dateFi);
+    console.log(Rest);
+
+    let H= Rest["hour"] + (Rest["day"]*24) ;
+    let M = Rest["min"];
+    let S = Rest["sec"];
     
-
-
-   
-   
-   
-
-   const Rest =  dateDiff(dateNow, dateFi);
-   console.log(Rest);
-
-  let H= Rest["hour"] + (Rest["day"]*24) ;
- let M = Rest["min"];
-  let S = Rest["sec"];
-
-
-  
-
-
-
-
-
     return (
        <EnchereWrapper className="col-9 mx-auto col-md-6 col-lg-3 my-3">
       
@@ -78,13 +60,15 @@ export default class Enchere extends Component {
 
         <ProductConsumer>
            {value=>(
+            
             <div 
-               className="img-container p-5"
+               className="img-container p-5 " 
                onClick={() => value.handleDetailE(_id)}>
                <Link to="/detailsE">
-               <img src={imgE} alt="Enchère" className="card-img-top" />
+               <img  src={imgE} alt="Enchère" className="card-img-top" />
                </Link>
             </div>
+            
             )}
         </ProductConsumer>
 
@@ -93,7 +77,7 @@ export default class Enchere extends Component {
         
         <div className="card-footer d-flex justify-content-between">
              
-               <h4 className="EnchereTitle">
+               <h4 className={((H===0)&&(M===0)&&(S===0)) ? 'EnchereDispo':'EnchereTitle'} >
               {titleE}
               </h4>
              
@@ -101,10 +85,7 @@ export default class Enchere extends Component {
          
          
         <div>
-
-        
-
-         <h5 className="text-blue font-italic rm-2 ">
+          <h5 className="text-blue font-italic rm-2 ">
           Dernier offre reçu:  {offre}<span className="mr-1"> € </span>
          </h5>
             
@@ -114,13 +95,9 @@ export default class Enchere extends Component {
             minute={M} 
             second={S} 
             color={((H===0)&&(M===0)&&(S===0))?"timerF":"timer"}
-            messageE={((H===0)&&(M===0)&&(S===0))?"Indisponible":" "} />
-
-
-          </h6>
-         
-         
-         </div>
+            messageE={((H===0)&&(M===0)&&(S===0))?"(Indisponible)":" "} />
+            </h6>
+        </div>
          
          </div>
       

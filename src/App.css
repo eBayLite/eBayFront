@@ -267,3 +267,7 @@ input.error {
 .EnchereTitle{
   color: #480ee9
 }
+
+.EnchereDispo{
+  text-decoration: line-through;
+}
