@@ -1,7 +1,7 @@
+
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { MDBCarousel, MDBCarouselCaption, MDBCarouselInner, MDBCarouselItem, MDBView, MDBMask, MDBContainer } from
-"mdbreact";
+import { MDBCarousel, MDBCarouselCaption, MDBCarouselInner, MDBCarouselItem, MDBView, MDBMask, MDBContainer } from "mdbreact";
 
 let CarouselPage = () => {
   return (
