@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import {Link} from 'react-router-dom';
 import axios from 'axios';
+import { creer } from './EnchereFunctions';
 
 export default class CreerEnchere extends Component {
     constructor(props){
@@ -121,8 +122,12 @@ export default class CreerEnchere extends Component {
 
          }
 
-         axios.post('http://localhost:4000/EbayDB/add',newEnchere)
-         .then(res => console.log(res.data));
+         creer(newEnchere).then(res => {
+            console.log(res);
+        })
+
+         /*axios.post('http://localhost:4000/EbayDB/add',newEnchere)
+         .then(res => console.log(res.data));*/
 
          this.setState({
             titleE:'',
