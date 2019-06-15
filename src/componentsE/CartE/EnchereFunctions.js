@@ -41,8 +41,10 @@ export const creer = newEnchere => {
     } else {
         throw new Error('token null')
     } 
-    
+      
 }
+
+//a modifier
 
 export const list = newEnchere => {
 
