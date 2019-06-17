@@ -42,7 +42,7 @@ class ProductProvider extends Component{
   
     setEncheres = ()=>{
       
-      axios.get('http://localhost:4000/EbayDB/')
+      axios.get('http://localhost:4000/EbayDB/encheres')
       .then(Response => {
         this.setState({
           encheres: Response.data
@@ -118,20 +118,21 @@ class ProductProvider extends Component{
   //Products methods
 
   setProducts = ()=>{
-    let TempProducts = [];
-    storeProducts.forEach(item =>{
-      const singleItem = {...item};
-      TempProducts = [...TempProducts,singleItem];
-     })
-  
-     this.setState(() =>{
-       return{products : TempProducts}
-     })
+    axios.get('http://localhost:4000/EbayDB/ventes')
+      .then(Response => {
+        this.setState({
+          products: Response.data
+        });
+      })
+      .catch(function(error){
+    
+          console.log(error);
+      })
   }
 
   getItem = (id) => {
 
-    const product = this.state.products.find(item => item.id === id);
+    const product = this.state.products.find(item => item._id === id);
     return product;
   } 
 
@@ -178,7 +179,7 @@ class ProductProvider extends Component{
 
   increment = (id)=>{
     let tempCart = [...this.state.cart];
-    const selectedProduct = tempCart.find(item=> item.id===id)
+    const selectedProduct = tempCart.find(item=> item._id===id)
 
     const index = tempCart.indexOf(selectedProduct);
     const product = tempCart[index];
@@ -193,7 +194,7 @@ class ProductProvider extends Component{
 
   decrement = (id)=>{
     let tempCart = [...this.state.cart];
-    const selectedProduct = tempCart.find(item=> item.id===id)
+    const selectedProduct = tempCart.find(item=> item._id===id)
 
     const index = tempCart.indexOf(selectedProduct);
     const product = tempCart[index];
@@ -215,7 +216,7 @@ class ProductProvider extends Component{
   removeItem = (id)=>{
     let TempProducts = [...this.state.products];
     let tempCart = [...this.state.cart];
-    tempCart = tempCart.filter(item=> item.id !== id);
+    tempCart = tempCart.filter(item=> item._id !== id);
     const index = TempProducts.indexOf(this.getItem(id));
     let removedProduct = TempProducts[index];
     removedProduct.inCart=false;
@@ -270,14 +271,14 @@ class ProductProvider extends Component{
 
   //commun methodes
 
+ 
    componentDidMount(){
-    this.setProducts();
-   this.setEncheres();
+   this.setProducts(); 
+   this.setEncheres(); 
   }
 
-  componentDidUpdate(){
-    this.setEncheres();
-  }
+
+  
 
     render(){
         return(

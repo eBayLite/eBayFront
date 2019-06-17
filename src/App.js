@@ -18,7 +18,10 @@ import CartE from './componentsE/CartE/CartE';
 import Login from './Accueil/Login';
 import Reinit from './Accueil/Reinit';
 import CreerEnchere from './componentsE/CartE/CreerEnchere'
+import CreerVente from './componentsV/Cart/CreerVente'
+
 import listEnchere from '../src/componentsE/listEnchere';
+import listProducts from '../src/componentsV/listProducts';
 import Accueil from './Accueil/Accueil';
 
 
@@ -36,6 +39,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={Accueil} />
           <Route exact path="/listEnchere" component={listEnchere} />
+          <Route exact path="/listProducts" component={listProducts} />
           <Route path="/login" component={Login} />
           <Route path="/reinit" component={Reinit} />
 
@@ -51,6 +55,7 @@ class App extends Component {
           <Route path="/cartE" component={CartE} />
 
           <Route path="/creerEnchere" component={CreerEnchere} />
+          <Route path="/creerVente" component={CreerVente} />
 
           <Route component={Default} />
           

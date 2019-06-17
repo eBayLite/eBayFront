@@ -1,35 +1,34 @@
 import React, { Component } from 'react';
 import {Link } from 'react-router-dom';
 import axios from 'axios';
-import NavBar2 from '../NavBar2'
+import NavBar3 from '../NavBar3'
 
-const Enchere = props =>(
+const Vente = props =>(
 
     <tr>
-        <td>{props.enchere.titleE}</td>
-        <td>{props.enchere.priceE}</td>
-        <td>{props.enchere.offre}</td>
-        <td>{props.enchere.infoE}</td>
-        <td>{props.enchere.companyE}</td>
+        <td>{props.vente.title}</td>
+        <td>{props.vente.price}</td>
+        <td>{props.vente.info}</td>
+        <td>{props.vente.company}</td>
         
         
     </tr>
 )
 
-export default class listEnchere extends Component {
+export default class listProducts extends Component {
 
     constructor(props){
         super(props);
         this.state={
-            encheres:[]
+            ventes:[]
         };
     }
 
     componentDidMount(){
        
-        axios.get('http://localhost:4000/EbayDB/encheres')
+        axios.get('http://localhost:4000/EbayDB/ventes')
         .then(Response => {
-            this.setState({encheres: Response.data});
+            this.setState({ventes: Response.data});
         })
         .catch(function(error){
 
@@ -37,9 +36,9 @@ export default class listEnchere extends Component {
         })
         
     }
-    enchereList() {
-        return this.state.encheres.map(function(currentEnchere, i) {
-            return <Enchere enchere={currentEnchere} key={i} />;
+    venteList() {
+        return this.state.ventes.map(function(currentVente, i) {
+            return <Vente vente={currentVente} key={i} />;
         });
     }
   render() { 
@@ -49,13 +48,12 @@ export default class listEnchere extends Component {
         
         
         <div className="col-md-12">
-        <h3 className="text-center mt-5 mb-5 ">Mes enchères</h3>
+        <h3 className="text-center mt-5 mb-5 ">Mes Ventes</h3>
         <table className="table table-striped col-md-12 ml-auto" style={{ marginTop: 20 }}>
                     <thead>
                         <tr>
                             <th>Produit</th>
-                            <th>Prix de départ</th>
-                            <th>Mon offre</th>
+                            <th>Prix</th>
                             <th>infos sur le produit</th>
                             <th>Vendeur</th>
                             
@@ -63,13 +61,13 @@ export default class listEnchere extends Component {
                         </tr>
                     </thead>
                     <tbody className="col-md-12">
-                        { this.enchereList() }
+                        { this.venteList() }
                     </tbody>
                 </table>
 
                 
       </div>
-      <NavBar2 />
+      <NavBar3 />
 
       </div>
     )

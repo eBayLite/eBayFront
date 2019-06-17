@@ -4,7 +4,7 @@ import React from 'react';
 
 
 function CartItem({item,value}){
-    const {id, title, img, price, total, count } = item;
+    const {_id, title, img, price, total, count } = item;
     const {increment, decrement, removeItem} = value;
    return(
        <div className="row my-2 text-capitalize text-center">
@@ -27,16 +27,16 @@ function CartItem({item,value}){
        <div className="col-10 mx-auto col-lg-2 my-2 my-lg-0">
        <div className="d-flex justify-content-center">
             <div>
-                <span className="btn btn-black mx-1" onClick={()=>decrement(id)}><i className="fas fa-minus" /></span>
+                <span className="btn btn-black mx-1" onClick={()=>decrement(_id)}><i className="fas fa-minus" /></span>
                 <span className="btn btn-black mx-1" >{count}</span>
-                <span className="btn btn-black mx-1" onClick={()=>increment(id)}><i className="fas fa-plus" /></span>
+                <span className="btn btn-black mx-1" onClick={()=>increment(_id)}><i className="fas fa-plus" /></span>
             </div>
         </div>
         </div>
        {/*  fin quantité */}
        
        <div className="col-10 mx-auto col-lg-2">
-             <div className="cart-icon" onClick={()=>removeItem(id)}>
+             <div className="cart-icon" onClick={()=>removeItem(_id)}>
               <i className="fas fa-trash-alt" />
 
              </div>

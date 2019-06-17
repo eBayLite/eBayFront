@@ -11,40 +11,41 @@ export default class CreerEnchere extends Component {
         this.onChangeTitle = this.onChangeTitle.bind(this);
         this.onChangeImg= this.onChangeImg.bind(this);
         this.onChangePrice = this.onChangePrice.bind(this);
-        this.onChangeInc = this.onChangeInc.bind(this);
         this.onChangeInfo = this.onChangeInfo.bind(this);
         this.onChangeCompany = this.onChangeCompany.bind(this);
-        this.onChangeDateFin = this.onChangeDateFin.bind(this);
-        this.onChangeOffre=this.onChangeOffre.bind(this);
+       
+       
        
         this.onSubmit = this.onSubmit.bind(this);
        
        
        
         this.state ={
-            titleE:'',
-            imgE:'',
-            priceE:'',
-            incE:'',
-            companyE:'',
-            infoE:'',
-            inPanE : false,
-            dateFin : '',
-            offre:0,
-            disponible:true
+            title:'',
+            img:'',
+            price:'',
+            inc:0,
+            company:'',
+            info:'',
+            inPan : false,
+            inCart : false,
+            count : 0,
+            total : 0
+            
+           
             
         }
     }
 
     onChangeTitle(e){
        this.setState({
-           titleE : e.target.value
+           title : e.target.value
        });
     }
 
     onChangeImg(e){
         this.setState({
-            imgE : e.target.value
+            img : e.target.value
         });
         
        
@@ -52,87 +53,61 @@ export default class CreerEnchere extends Component {
 
      onChangePrice(e){
         this.setState({
-            priceE : e.target.value
+            price : e.target.value
         });
      }
 
-     onChangeInc(e){
-        this.setState({
-            incE : e.target.value
-        });
-     }
+     
+   
 
      onChangeCompany(e){
         this.setState({
-            companyE : e.target.value
+            company : e.target.value
         });
      }
 
      onChangeInfo(e){
         this.setState({
-            infoE : e.target.value
+            info : e.target.value
         });
      }
 
-     onChangeOffre(e){
-        this.setState({
-            offre : e.target.value
-        });
-     }
+     
 
-     onChangeDateFin(e){
-        this.setState({
-            dateFin : e.target.value
-        });
-
-        
-     }
+    
 
 
 
      onSubmit(e){
          e.preventDefault();
 
-         console.log(`form submited: `);
-         console.log(`titre: ${this.state.titleE}`);
-         console.log(`image: ${this.state.imgE}`);
-         console.log(`prix: ${this.state.priceE}`);
-         console.log(`increment: ${this.state.incE}`);
-         console.log(`company: ${this.state.companyE}`);
-         console.log(`info: ${this.state.infoE}`);
-         console.log(`Panier: ${this.state.inPanE}`);
-         console.log(`dateFin: ${this.state.dateFin}`);
-         console.log(`offre: ${this.state.offre}`);
-         console.log(`disponible: ${this.state.disponible}`);
+    
 
 
-         const newEnchere = {
+         const newVente = {
 
-            titleE: this.state.titleE,
-            imgE: this.state.imgE,
-            priceE: this.state.priceE,
-            incE: this.state.incE,
-            companyE: this.state.companyE,
-            infoE: this.state.infoE,
-            inPanE : this.state.inPanE,
-            dateFin : this.state.dateFin,
-            offre : this.state.priceE,
-            disponible:this.state.disponible
+            title: this.state.title,
+            img: this.state.img,
+            price: this.state.price,
+            inc: this.state.inc,
+            company: this.state.company,
+            info: this.state.info,
+            inPan : this.state.inPan,
+            inCart : this.state.inCart,
+            count : this.state.count,
+            total : this.state.total
 
          }
 
-         axios.post('http://localhost:4000/EbayDB/add/enchere',newEnchere)
+         axios.post('http://localhost:4000/EbayDB/add/vente',newVente)
          .then(res => console.log(res.data));
 
          this.setState({
-            titleE:'',
-            imgE:'',
-            priceE:'',
-            incE:'',
-            companyE:'',
-            infoE:'',
-            dateFin : '',
-            inPanE : false,
+            title:'',
+            img:'',
+            price:'',
+            company:'',
+            info:''
             
          })
 
@@ -143,37 +118,20 @@ export default class CreerEnchere extends Component {
         return (
         
             <div className="container   col-md-6" style={{marginTop: 20}}>
-                <h3 className="text-center mt-2">Créer une enchère</h3>
+                <h3 className="text-center mt-2">Ajouter une vente</h3>
                 <form onSubmit={this.onSubmit} >
 
                     
 
-                    <div class="form-group text-blue col-md-3">
-                        <label>Date de fin : </label>
-                        <input  type="date"
-                                className="form-control"
-                                value={this.state.dateFin}
-                                onChange={this.onChangeDateFin}
-  
-                               />
-                    </div>
-
-                    <div class="form-group text-blue col-md-3">
-                        <label>Minimum pour enchèrir (€) : </label>
-                        <input  type="text"
-                                className="form-control"
-                                value={this.state.incE}
-                                onChange={this.onChangeInc}
-  
-                               />
-                    </div>
+                    
+                    
 
                     
                     <div class="form-group text-blue col-md-9">
                         <label>Titre: </label>
                         <input  type="text"
                                 className="form-control"
-                                value={this.state.titleE}
+                                value={this.state.title}
                                 onChange={this.onChangeTitle}
                                 
                                 />
@@ -181,10 +139,10 @@ export default class CreerEnchere extends Component {
 
 
                     <div class="form-group text-blue col-md-3">
-                        <label>Prix de départ (€): </label>
+                        <label>Prix (€): </label>
                         <input  type="text"
                                 className="form-control"
-                                value={this.state.priceE}
+                                value={this.state.price}
                                 onChange={this.onChangePrice}
                                 
                                 />
@@ -195,7 +153,7 @@ export default class CreerEnchere extends Component {
                         <textarea 
                                 type="text" 
                                 className="form-control"
-                                value={this.state.infoE}
+                                value={this.state.info}
                                 onChange={this.onChangeInfo}
                                 rows = "5"
                                 />
@@ -206,7 +164,7 @@ export default class CreerEnchere extends Component {
                         <label>Contact (tél): </label>
                         <input  type="text"
                                 className="form-control"
-                                value={this.state.companyE}
+                                value={this.state.company}
                                 onChange={this.onChangeCompany}
                                 
   
@@ -218,7 +176,7 @@ export default class CreerEnchere extends Component {
                         <label>Image du produit: </label>
                         <input  type="file"
                                 className="form-control"
-                                value={this.state.imgE}
+                                value={this.state.img}
                                 onChange={this.onChangeImg}
                                 
   
@@ -226,19 +184,19 @@ export default class CreerEnchere extends Component {
                     </div>
                     
                     <div className="form-group col-md-3 mt-2">
-                        <Link to="/listEnchere">
+                        <Link to="/listProducts">
                         <button className="btn btn-dark"> 
                         <span className="mr-2">
                         <i class="fas fa-chevron-left" />
                         </span>
-                        Retour à mes enchere</button>
+                        Retour à mes ventes</button>
                         </Link>
                     </div>
                     
                     <div className="form-group     ">
                     
                      <input type="submit" value="Valider la creation" className="btn btn-warning mt-2" />
-                     <Link to ="/enchereList">
+                     <Link to ="/productList">
                      </Link>
                     </div>
                     
