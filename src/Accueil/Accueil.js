@@ -2,23 +2,26 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { MDBCarousel, MDBCarouselCaption, MDBCarouselInner, MDBCarouselItem, MDBView, MDBMask, MDBContainer } from "mdbreact";
+import EnchereList from './../componentsE/EnchereList';
+import ProductList from './../componentsV/ProductList';
 
 let CarouselPage = () => {
   return (
-    <MDBContainer autoPlay>
+    <div>
+    <MDBContainer autoPlay className="col-md-12">
       <MDBCarousel
       activeItem={1}
       length={3}
       showControls={true}
       showIndicators={true}
-      className="z-depth-1"
+      className="z-depth-2"
     >
       <MDBCarouselInner>
         <MDBCarouselItem itemId="1">
           <MDBView>
             <img
               className="d-block w-100"
-              src="imgC/3.jpg"
+              src="imgC/1.jpg"
               alt="First slide"
             />
           
@@ -32,7 +35,7 @@ let CarouselPage = () => {
           <MDBView>
             <img
               className="d-block w-100"
-              src="imgC/1.jpg"
+              src="imgC/2.jpg"
               alt="Second slide"
             />
           
@@ -46,7 +49,7 @@ let CarouselPage = () => {
           <MDBView>
             <img
               className="d-block w-100"
-              src="imgC/2.jpg"
+              src="imgC/3.png"
               alt="Third slide"
             />
           
@@ -59,6 +62,9 @@ let CarouselPage = () => {
       </MDBCarouselInner>
     </MDBCarousel>
     </MDBContainer>
+    <EnchereList className="col-md-9"/>
+    <ProductList className="col-md-9"/>
+    </div>
   );
 }
 
