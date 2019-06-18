@@ -277,6 +277,9 @@ class ProductProvider extends Component{
    this.setEncheres(); 
   }
 
+  componentDidUpdate(){
+    this.setEncheres();
+  }
 
   
 

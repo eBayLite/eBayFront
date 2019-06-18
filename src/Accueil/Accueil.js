@@ -62,8 +62,13 @@ let CarouselPage = () => {
       </MDBCarouselInner>
     </MDBCarousel>
     </MDBContainer>
-    <EnchereList className="col-md-9"/>
-    <ProductList className="col-md-9"/>
+
+    <div  className="col-md-12">
+    <EnchereList />
+    </div>
+    <div className="col-md-12">
+    <ProductList />
+    </div>
     </div>
   );
 }
