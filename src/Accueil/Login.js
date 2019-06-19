@@ -27,7 +27,10 @@ class Login extends Component {
 
         login(user).then(res => {
             if (res) {
-                this.props.history.push(`/profile`)
+                if(localStorage.usertoken){
+                this.props.history.push(`/profile`)}
+                else if(localStorage.admintoken){
+                this.props.history.push(`/profileAdmin`)}
             }
         })
     }

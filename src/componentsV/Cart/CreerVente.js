@@ -37,6 +37,17 @@ export default class CreerEnchere extends Component {
         }
     }
 
+    verifierToken(){
+        if (!localStorage.admintoken){
+            this.props.history.push(`/redirect`);
+        }
+    }
+
+
+    componentDidMount () {
+        this.verifierToken();
+    }
+
     onChangeTitle(e){
        this.setState({
            title : e.target.value
@@ -99,7 +110,7 @@ export default class CreerEnchere extends Component {
 
          }
 
-         axios.post('http://localhost:4000/EbayDB/add/vente',newVente)
+         axios.post('http://localhost:3000/produits/vendre',newVente)
          .then(res => console.log(res.data));
 
          this.setState({
@@ -115,7 +126,7 @@ export default class CreerEnchere extends Component {
  
 
     render() {
-        return (
+        return localStorage.admintoken ? (
         
             <div className="container   col-md-6" style={{marginTop: 20}}>
                 <h3 className="text-center mt-2">Ajouter une vente</h3>
@@ -202,6 +213,6 @@ export default class CreerEnchere extends Component {
                     
              </form>
      </div>
-     )
+     ) : null;
     }
 }

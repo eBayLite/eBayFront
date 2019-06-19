@@ -24,7 +24,7 @@ return(
     <p className="text-uppercase">Supprimer</p>
    </div>
    <div className="col-10 mx-auto col-lg-2">
-    <p className="text-uppercase">Total</p>
+    <p className="text-uppercase">Total (HT)</p>
    </div>
 
   </div>

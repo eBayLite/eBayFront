@@ -30,7 +30,7 @@ class Modal extends Component{
                        <div id="modal" className="col-8 mx-auto col-md-6 col-lg-4 text-center text-capitalize p-4">
                          <h5>Produit ajouté au panier</h5>
                          <img src={img} className="img-fluid" alt="product"/>
-                         <h5>{title}</h5>
+                         <h5 className="titreED">{title}</h5>
                          <h5 className="text-muted">Prix: {price} euros </h5>
                      
                          <Link to="/productList">

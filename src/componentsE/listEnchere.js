@@ -27,23 +27,32 @@ export default class listEnchere extends Component {
 
     componentDidMount(){
        
-        axios.get('http://localhost:4000/EbayDB/encheres')
+        axios.get('http://localhost:3000/encheres/listench')
         .then(Response => {
             this.setState({encheres: Response.data});
         })
         .catch(function(error){
 
             console.log(error);
-        })
+        });
+
+        this.verifierToken();
         
     }
+
+    verifierToken(){
+        if(!(localStorage.usertoken||localStorage.admintoken)){
+            this.props.history.push(`/redirect`);
+        }
+    }
+
     enchereList() {
         return this.state.encheres.map(function(currentEnchere, i) {
             return <Enchere enchere={currentEnchere} key={i} />;
         });
     }
   render() { 
-    return (
+    return (localStorage.usertoken||localStorage.admintoken) ? (
          <div className=" container col-md-9">
 
         
@@ -72,6 +81,6 @@ export default class listEnchere extends Component {
       <NavBar2 />
 
       </div>
-    )
+    ) : null;
   }
 }

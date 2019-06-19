@@ -23,13 +23,12 @@ constructor(props){
     infoE:'',
     dateFin : '',
     offre:'',
-    disponible:true,
     newOffre: ''
   }
 }
 
 componentDidMount(){
-  axios.get('http://localhost:4000/EbayDB/'+this.props.match.params.id)
+  axios.get('http://localhost:3000/encheres/enchbyid/'+this.props.match.params.id)
   .then(response =>{
     this.setState({
     titleE:response.data.titleE,
@@ -39,13 +38,20 @@ componentDidMount(){
     companyE:response.data.companyE,
     infoE:response.data.infoE,
     dateFin : response.data.dateFin,
-    offre:response.data.offre,
-    disponible:response.data.disponible
+    offre:response.data.offre
     })
   })
   .catch(function(error){
     console.log(error)
   })
+
+  this.verifierToken();
+}
+
+verifierToken(){
+  if(!(localStorage.usertoken||localStorage.admintoken)){
+      this.props.history.push(`/redirect`);
+  }
 }
 
 
@@ -78,7 +84,7 @@ onSubmit(e){
     disponible:this.state.disponible
   };
 
-  axios.post('http://localhost:4000/EbayDB/update/'+this.props.match.params.id,Ench)
+  axios.post('http://localhost:3000/encheres/update/'+this.props.match.params.id,Ench)
   .then(res=> console.log(res.data));
   this.props.history.push('/enchereList');
 }

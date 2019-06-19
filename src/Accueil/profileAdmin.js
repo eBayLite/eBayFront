@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import jwt_decode from 'jwt-decode'
 
-class Profile extends Component {
+class ProfileAdm extends Component {
     constructor() {
         super()
         this.state = {
@@ -12,18 +12,18 @@ class Profile extends Component {
     }
 
     componentDidMount () {
-        const token = localStorage.usertoken
-        const decoded = jwt_decode(token)
-        this.setState({
-            nom: decoded.nom,
-            prenom: decoded.prenom,
-            email: decoded.email,
+            const token = localStorage.admintoken
+            const decoded = jwt_decode(token)
+            this.setState({
+                nom: decoded.nom,
+                prenom: decoded.prenom,
+                email: decoded.email
         });
         this.verifierToken();
     }
 
     verifierToken(){
-        if (!localStorage.usertoken){
+        if (!localStorage.admintoken){
             this.props.history.push(`/redirect`);
         }
     }
@@ -54,9 +54,10 @@ class Profile extends Component {
                 </div>
 
 
+
             </div>
         )
     }
 }
 
-export default Profile
+export default ProfileAdm

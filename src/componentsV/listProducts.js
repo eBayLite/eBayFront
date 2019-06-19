@@ -24,9 +24,15 @@ export default class listProducts extends Component {
         };
     }
 
+    verifierToken(){
+        if (!localStorage.admintoken){
+            this.props.history.push(`/redirect`);
+        }
+    }
+
     componentDidMount(){
        
-        axios.get('http://localhost:4000/EbayDB/ventes')
+        axios.get('http://localhost:3000/produits/listventes')
         .then(Response => {
             this.setState({ventes: Response.data});
         })
@@ -34,6 +40,8 @@ export default class listProducts extends Component {
 
             console.log(error);
         })
+
+        this.verifierToken();
         
     }
     venteList() {
@@ -42,7 +50,7 @@ export default class listProducts extends Component {
         });
     }
   render() { 
-    return (
+    return localStorage.admintoken ? (
          <div className=" container col-md-9">
 
         
@@ -70,6 +78,6 @@ export default class listProducts extends Component {
       <NavBar3 />
 
       </div>
-    )
+    ) : null;
   }
 }

@@ -257,7 +257,7 @@ input.error {
 }
 
 .MinPourEncherire{
-  color:#06706b
+  color:#f86e1f
 }
 
 .Compte{
@@ -270,4 +270,12 @@ input.error {
 
 .EnchereDispo{
   text-decoration: line-through;
+}
+
+.PrixP{
+  color: #f35f09
+}
+
+.TotalCard{
+  color: orangered
 }

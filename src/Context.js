@@ -42,7 +42,7 @@ class ProductProvider extends Component{
   
     setEncheres = ()=>{
       
-      axios.get('http://localhost:4000/EbayDB/encheres')
+      axios.get('http://localhost:3000/encheres/listench')
       .then(Response => {
         this.setState({
           encheres: Response.data
@@ -118,7 +118,7 @@ class ProductProvider extends Component{
   //Products methods
 
   setProducts = ()=>{
-    axios.get('http://localhost:4000/EbayDB/ventes')
+    axios.get('http://localhost:3000/produits/listventes')
       .then(Response => {
         this.setState({
           products: Response.data
@@ -279,6 +279,7 @@ class ProductProvider extends Component{
 
   componentDidUpdate(){
     this.setEncheres();
+   
   }
 
   

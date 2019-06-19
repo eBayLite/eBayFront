@@ -43,6 +43,16 @@ function dateDiff(date1, date2){
 
 export default class DetailsE extends Component {
 
+  verifierToken(){
+    if (!(localStorage.usertoken||localStorage.admintoken)){
+        this.props.history.push(`/redirect`);
+    }
+}
+
+
+componentDidMount () {
+    
+}
 
   render() {
     return (
@@ -84,7 +94,7 @@ export default class DetailsE extends Component {
             <div className="row">
                <div className="col-10 mx-auto text-center text-slanted my-5">
                 <h1 className="titreED">{titleE}</h1>
-                <p className="text-muted lead ">{infoE} </p>
+                <p className="text-muted lead "   >  </p>
                </div>
                
              </div>
@@ -100,7 +110,11 @@ export default class DetailsE extends Component {
                {/* enchere texte  */}
                <div className="col-10 mx-auto col-md-6 my-3 text-capitalized">
                 <h3>Produit: {titleE}</h3>
-                <h4 className="text-title text-uppercase text-muted mt-3 mb-2">Vendeur: <span className="text-uppercase">{companyE}</span></h4>
+                <h4 className="  mt-3 mb-2">Vendeur: <span className="text-uppercase">
+                  <span className="mr-2">
+                  <i className="fas fa-phone" />
+                  </span>
+                 {companyE}</span></h4>
                 <p className="text-capitalize font-weight-bold mt-3 mb-0">A propos du produit :</p>
                 <p className="text-muted lead ">{infoE} </p>
 
@@ -124,26 +138,26 @@ export default class DetailsE extends Component {
                 <input 
                 className="btn btn-warning col-md-12 mt-2"
                 type="submit" 
-                disabled={((H===0)&&(M===0)&&(S===0))?true:false}
-                value={((H===0)&&(M===0)&&(S===0))?"Indisponible": "Faire une offre"} 
+                disabled={(!(localStorage.usertoken||localStorage.admintoken)||((H===0)&&(M===0)&&(S===0)))?true:false}
+                value={(!(H===0)&&(M===0)&&(S===0))?((!(localStorage.usertoken||localStorage.admintoken)?"Connectez-vous pour enchèrir":"Indisponible" )): "Fa une offre"} 
                  />  
                 </div>
                 </Link>
                
                
                 <h2 className="text-blue mt-5 ">
-                 <strong>Dernière offre reçu: {offre} <span> €</span></strong>
+                 <h4>Dernière offre reçu: {offre} <span> €</span></h4>
                </h2>
-                 <h4 className="mx-auto mt-2 ">
+                 <h5 className="mx-auto mt-2 ">
                  <small className="MinPourEncherire">Minimum pour enchèrir: {incE} <span> €</span></small>
-                 </h4>
+                 </h5>
 
             <div className="mt-5 col-md-12">
-            <Link to="/enchereList">
+            <Link to="/EnchereList">
               <button 
               type="button" 
               class="btn btn-outline-secondary col-md-12">
-                <i className="fas fa-arrow-left" /> Retour au enchères</button>
+                <i className="fas fa-arrow-left" /> Retour aux enchères</button>
             </Link>
             </div>
 
@@ -156,6 +170,6 @@ export default class DetailsE extends Component {
           )
            }}
        </ProductConsumer>
-    );
+    )
   }
 }

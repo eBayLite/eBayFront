@@ -8,10 +8,7 @@ import { ProductConsumer } from '../Context';
 
 
 export default class EnchereList extends Component {
-   actu =() =>{
-     this.setState({...this.state})
-     console.log("actu")
-   }
+   
   render() {
     
     return (
@@ -27,7 +24,7 @@ export default class EnchereList extends Component {
               {value =>{
                  return value.encheres.map(enchere => {
                     return <Enchere
-                             key={enchere.idE}
+                             key={enchere._id}
                              enchere={enchere}>
                            </Enchere>;
                   })

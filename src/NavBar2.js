@@ -13,7 +13,7 @@ class NavBar2 extends Component{
      
       <ul className="navbar-nav align-items-center ml-auto ">
             
-        <Link to="/creerEnchere" >
+      <Link to="/encheres/creer" >
         <button type="button" class="btn btn-outline-dark">
             <span className="mr-2">
              <i className="fas fa-plus" />

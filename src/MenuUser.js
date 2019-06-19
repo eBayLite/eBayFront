@@ -4,10 +4,20 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import {Link} from 'react-router-dom';
 
-class SimpleMenu extends React.Component {
+import jwt_decode from 'jwt-decode';
+
+class MenuUser extends React.Component {
   state = {
     anchorEl: null,
   };
+
+  componentDidMount () {
+    const token = localStorage.usertoken
+    const decoded = jwt_decode(token)
+    this.setState({
+        prenom: decoded.prenom,
+    });
+  }
 
   handleClick = event => {
     this.setState({ anchorEl: event.currentTarget });
@@ -33,7 +43,7 @@ class SimpleMenu extends React.Component {
          <span className="mr-2">
              <i className="fas fa-angle-down" />
         </span>
-         Mon compte
+        Bonjour {this.state.prenom}
         </Button>
         <Menu
           id="simple-menu"
@@ -41,7 +51,7 @@ class SimpleMenu extends React.Component {
           open={Boolean(anchorEl)}
           onClose={this.handleClose}
         >
-          <Link to="/accueil">
+          <Link to="/profile">
           <MenuItem onClick={this.handleClose}>Mon profil</MenuItem>
           </Link>
 
@@ -49,16 +59,6 @@ class SimpleMenu extends React.Component {
           <MenuItem onClick={this.handleClose}>Mes enchères</MenuItem>
           </Link>
 
-          <Link to="/listProducts">
-          <MenuItem onClick={this.handleClose}>Mes produits</MenuItem>
-          </Link>
-
-          <Link to="/login">
-          <MenuItem onClick={this.handleClose}>Deconnexion</MenuItem>
-          </Link>
-
-          
-          
           
         </Menu>
       </div>
@@ -66,4 +66,4 @@ class SimpleMenu extends React.Component {
   }
 }
 
-export default SimpleMenu;
+export default MenuUser;

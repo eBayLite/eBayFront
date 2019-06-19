@@ -1,4 +1,5 @@
 import axios from 'axios'
+import jwt from "jwt-decode"
 
 export const register = newUser => {
     return axios
@@ -26,6 +27,18 @@ export const login = user => {
         })
         .then(res => {
             localStorage.setItem('usertoken', res.data)
+            const tok = localStorage.getItem('usertoken');
+            console.log(jwt(tok))
+            const val = jwt(tok);
+            console.log(val.email);
+            if (val.admin){
+                console.log("ok admin!!");
+                localStorage.setItem('admintoken', tok);
+                localStorage.removeItem('usertoken');
+            }
+            else{
+                console.log("vous n'êtes pas un admin");
+            }
             return res.data
         })
         .catch(err => {

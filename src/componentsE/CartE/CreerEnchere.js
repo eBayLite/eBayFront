@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import {Link} from 'react-router-dom';
 import axios from 'axios';
+import Alert from '../../Alert';
+import { creer } from './EnchereFunctions';
 
 export default class CreerEnchere extends Component {
     constructor(props){
@@ -31,9 +33,22 @@ export default class CreerEnchere extends Component {
             inPanE : false,
             dateFin : '',
             offre:0,
-            disponible:true
+            disponible:true,
+
+           
             
         }
+    }
+
+    verifierToken(){
+        if (!(localStorage.usertoken||localStorage.admintoken)){
+            this.props.history.push(`/redirect`);
+        }
+    }
+
+
+    componentDidMount () {
+        this.verifierToken();
     }
 
     onChangeTitle(e){
@@ -87,11 +102,11 @@ export default class CreerEnchere extends Component {
 
         
      }
-
-
-
+     
+    
      onSubmit(e){
          e.preventDefault();
+         
 
          console.log(`form submited: `);
          console.log(`titre: ${this.state.titleE}`);
@@ -121,8 +136,12 @@ export default class CreerEnchere extends Component {
 
          }
 
-         axios.post('http://localhost:4000/EbayDB/add/enchere',newEnchere)
-         .then(res => console.log(res.data));
+         creer(newEnchere).then(res => {
+            console.log(res);
+        })
+
+        /* axios.post('http://localhost:4000/EbayDB/add/enchere',newEnchere)
+         .then(res => console.log(res.data));*/
 
          this.setState({
             titleE:'',
@@ -136,12 +155,17 @@ export default class CreerEnchere extends Component {
             
          })
 
+         
+
      }
  
 
     render() {
-        return (
+
+        return this.verifierToken ?(
         
+            <div>
+           
             <div className="container   col-md-6" style={{marginTop: 20}}>
                 <h3 className="text-center mt-2">Créer une enchère</h3>
                 <form onSubmit={this.onSubmit} >
@@ -157,6 +181,8 @@ export default class CreerEnchere extends Component {
   
                                />
                     </div>
+
+                   
 
                     <div class="form-group text-blue col-md-3">
                         <label>Minimum pour enchèrir (€) : </label>
@@ -237,13 +263,15 @@ export default class CreerEnchere extends Component {
                     
                     <div className="form-group     ">
                     
-                     <input type="submit" value="Valider la creation" className="btn btn-warning mt-2" />
-                     <Link to ="/enchereList">
-                     </Link>
+                     <input type="submit" value="Valider la creation" className="btn btn-warning mt-2"  />
+                     
                     </div>
+
+                   
                     
              </form>
      </div>
-     )
+     </div>
+     ) :null;
     }
 }
