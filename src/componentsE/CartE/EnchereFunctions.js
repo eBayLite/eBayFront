@@ -4,11 +4,17 @@ const API_ENDPOINT = 'http://localhost:3000/'
 
 
 function getAuthorization(){
-    const token = localStorage.getItem('usertoken')
+    const token = localStorage.getItem('usertoken');
+    const tokenAd = localStorage.getItem('admintoken');
     if (token !== null){
         return {
             headers: {'Authorization': "bearer " + token}
         }
+}
+    else if(tokenAd!==null){
+        return {
+                        headers: {'Authorization': "bearer " + tokenAd}
+                    }
     } else {
         return null
     }

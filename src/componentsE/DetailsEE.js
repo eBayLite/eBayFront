@@ -28,8 +28,10 @@ constructor(props){
 }
 
 componentDidMount(){
-  axios.get('http://localhost:3000/encheres/enchbyid/'+this.props.match.params.id)
-  .then(response =>{
+
+  console.log("entrain de charger les données");
+ axios.get('http://localhost:3000/encheres/enchbyid/' +this.props.match.params.id)
+   .then(response =>{
     this.setState({
     titleE:response.data.titleE,
     imgE : response.data.imgE,
@@ -40,11 +42,14 @@ componentDidMount(){
     dateFin : response.data.dateFin,
     offre:response.data.offre
     })
+    console.log("données chargées")
+
   })
   .catch(function(error){
     console.log(error)
   })
-
+}
+/*
   this.verifierToken();
 }
 
@@ -54,6 +59,7 @@ verifierToken(){
   }
 }
 
+*/
 
 onChangeOffre(e){
   this.setState({
@@ -90,7 +96,7 @@ onSubmit(e){
 }
 
   render() {
-    return (
+    return/* (localStorage.usertoken||localStorage.admintoken) ?*/ (
         
        <div className="container py-5">
         <form onSubmit={this.onSubmit} > 
@@ -152,7 +158,7 @@ onSubmit(e){
 
   
         
-          )
+    )/*:null;*/
          }}
        
     

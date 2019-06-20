@@ -16,6 +16,7 @@ class MenuUser extends React.Component {
     const decoded = jwt_decode(token)
     this.setState({
         prenom: decoded.prenom,
+        nom : decoded.nom
     });
   }
 
@@ -43,7 +44,7 @@ class MenuUser extends React.Component {
          <span className="mr-2">
              <i className="fas fa-angle-down" />
         </span>
-        Bonjour {this.state.prenom}
+        Bonjour {this.state.prenom} {this.state.nom}
         </Button>
         <Menu
           id="simple-menu"

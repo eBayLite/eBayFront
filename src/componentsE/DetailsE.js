@@ -139,7 +139,7 @@ componentDidMount () {
                 className="btn btn-warning col-md-12 mt-2"
                 type="submit" 
                 disabled={(!(localStorage.usertoken||localStorage.admintoken)||((H===0)&&(M===0)&&(S===0)))?true:false}
-                value={(!(H===0)&&(M===0)&&(S===0))?((!(localStorage.usertoken||localStorage.admintoken)?"Connectez-vous pour enchèrir":"Indisponible" )): "Fa une offre"} 
+                value={!(H===0)&&(M===0)&&(S===0)? "Indisponible" : "Faire une offre"} 
                  />  
                 </div>
                 </Link>
